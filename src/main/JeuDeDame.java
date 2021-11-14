@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.Perso;
 import model.Pion;
 import utils.CreatePerso;
 import utils.Utilitaires;
@@ -13,10 +14,7 @@ public class JeuDeDame {
 	
 	final int ligne = 8;
 	final int colonne = 8;
-	String[][] tableauDeDame = new String[ligne][colonne];
-	
-	Scanner mouv = new Scanner(System.in);
-	
+	String[][] tableauDeDame = new String[ligne][colonne];	
 	
 	public ArrayList<Pion> allPion = new ArrayList<Pion>();
 	
@@ -47,6 +45,30 @@ public class JeuDeDame {
 		allPion.add(CreatePerso.p23);
 		allPion.add(CreatePerso.p24);
 		b.fillTab(tableauDeDame, allPion);
+	}
+	private void mouvMap() {
+		//faire un scanner, demander mouvement à utilisateur
+		
+		do{
+			System.out.println("\n\nSaisir mouvement (up:z , down:s, left:q, right:d).");
+		
+			int mouvement;
+			//gerer la saisie clavier
+			
+				for(Pion perso : allPion) {
+					
+					    mouvement = Utilitaires.saisieMouv();
+					
+					}
+					mouvPion(pion,mouvement);
+				
+				
+				
+	b.fillTab(tableauDeDame, allPion);
+			
+		}
+
+		while(true);
 	}
 	
 	
