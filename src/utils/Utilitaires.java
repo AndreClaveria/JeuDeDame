@@ -1,5 +1,7 @@
 package utils;
 
-public class Utilitaires {
+import model.Pion;
 
+public class Utilitaires {
+	
 }

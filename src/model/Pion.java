@@ -13,6 +13,8 @@ public class Pion {
 		this.pion = pion;
 		this.controlledByUser = controlledByUser;
 	}
+	
+	//TODO : Faire une condition qui permet d'enlever le pion quand il est mangé
 
 	public int getX() {
 		return x;

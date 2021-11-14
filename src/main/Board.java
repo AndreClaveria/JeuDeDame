@@ -1,4 +1,4 @@
-package utils;
+package main;
 
 import java.util.ArrayList;
 
@@ -10,11 +10,16 @@ public class Board {
 		DisplayRowIndex();
 		for(int i = 0; i < tableauDeDame.length; i++) {
 			DrawHorizontalLine();
+			
 			for(int j = 0; j < tableauDeDame[i].length; j++) {
-				DrawVerticalLine();
+				if(j == 0) {
+					LeftDisplayColIndex(i);
+				} else {
+					DrawVerticalLine();
+				}
 				System.out.print(tableauDeDame[j][i]);				
 			}
-			DrawVerticalLine();
+			RightDisplayColIndex(i);
 			System.out.println();
 		}
 		DrawHorizontalLine();
@@ -49,22 +54,26 @@ public class Board {
 		printTab(tableauDeDame);
 	}
 			
-	
 	public void DrawHorizontalLine() {        
-		System.out.println(" _______________________________________________");   
+		System.out.println("   _______________________________________________");   
 	}
 
 	public void DrawVerticalLine() {
 		System.out.print("|");
 	}
 
-	public void DisplayColIndex(int i) {
-		System.out.print(i);
+	public void LeftDisplayColIndex(int i) {
+		
+		System.out.print(i + " |");
+	}
+	public void RightDisplayColIndex(int i) {
+		
+		System.out.print("| " + i);
 	}
 	
 	public void DisplayRowIndex() {
 	    for(int index = 0; index < 8; index++) {
-	    	System.out.print("   " + index + "  ");
+	    	System.out.print("     " + index);
 	    }
 	    System.out.println();
 	}
