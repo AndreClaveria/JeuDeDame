@@ -1,5 +1,9 @@
 package utils;
 
+import java.util.ArrayList;
+
+import model.Pion;
+
 public class Board {
 
 	public void printTab(String[][] tableauDeDame) {
@@ -17,7 +21,7 @@ public class Board {
 		DisplayRowIndex();
 	}
 	
-	public void fillTab(String[][] tableauDeDame) {
+	public void fillTab(String[][] tableauDeDame, ArrayList<Pion> pionPlacement) {
 		for(int i = 0 ; i < tableauDeDame.length ; i++) {
 			if(i%2 == 0) {
 				for(int j = 0 ; j < tableauDeDame[i].length ; j++) {
@@ -35,7 +39,11 @@ public class Board {
 						tableauDeDame[i][j] = "  -  ";
 					}	
 				}
-			}	
+			}
+			
+		}
+		for (Pion perso: pionPlacement) {
+			tableauDeDame[perso.getX()][perso.getY()] = perso.getPion();
 		}
 
 		printTab(tableauDeDame);
@@ -55,7 +63,7 @@ public class Board {
 	}
 	
 	public void DisplayRowIndex() {
-	    for(int index = 1; index <= 8; index++) {
+	    for(int index = 0; index < 8; index++) {
 	    	System.out.print("   " + index + "  ");
 	    }
 	    System.out.println();
