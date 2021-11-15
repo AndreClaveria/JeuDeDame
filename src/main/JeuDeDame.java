@@ -10,7 +10,8 @@ import utils.Utilitaires;
 public class JeuDeDame {
 	
 	Board b = new Board();
-	
+	int directionLigne;
+	int directionColonne;
 	final int ligne = 8;
 	final int colonne = 8;
 	String[][] tableauDeDame = new String[ligne][colonne];
@@ -46,15 +47,46 @@ public class JeuDeDame {
 		allPion.add(CreatePerso.p22);
 		allPion.add(CreatePerso.p23);
 		allPion.add(CreatePerso.p24);
-		b.fillTab(tableauDeDame, allPion);
+		
+		do {
+			b.fillTab(tableauDeDame, allPion);
+			direction();
+		}while(true);
 	}
 	
 	public void direction() {
-		System.out.println();
-		System.out.println("L'index de la ligne du pion que vous voulez :" );
-		System.out.print("Votre choix : ");
+		Utilitaires.demandeLigne();
+		for(Pion p : allPion) {
+			directionLigne = mouv.nextInt();
+			Utilitaires.demandeColonne();
+			directionColonne = mouv.nextInt();
+			mouvPionBlanc(p, directionLigne, directionColonne);	
+		}
 		
 	}
 	
+	public void mouvPionBlanc(Pion p, int x, int y) {
+		System.out.println(x);
+		System.out.println(y);
+		System.out.println(p);
+		
+		if(p.getPion() == "  W  ") {
+			if(p.getX() == x && p.getY() == y) {
+				Utilitaires.demandeLigneMouv();
+				directionLigne = mouv.nextInt();
+				Utilitaires.demandeColonneMouv();
+				directionColonne = mouv.nextInt();
+				if(tableauDeDame[directionLigne][directionColonne] == "  -  ") {
+					tableauDeDame[p.getX()][p.getY()] = "  -  ";
+					p.setX(directionLigne);
+					p.setY(directionColonne);
+					tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				}
+			}
+		} else {
+			System.out.println("Error");
+		}
+		
+	}
 	
 }
