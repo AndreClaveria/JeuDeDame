@@ -49,5 +49,12 @@ public class JeuDeDame {
 		b.fillTab(tableauDeDame, allPion);
 	}
 	
+	public void direction() {
+		System.out.println();
+		System.out.println("L'index de la ligne du pion que vous voulez :" );
+		System.out.print("Votre choix : ");
+		
+	}
+	
 	
 }
