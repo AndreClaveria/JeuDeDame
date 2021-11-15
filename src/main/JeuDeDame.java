@@ -15,6 +15,7 @@ public class JeuDeDame {
 	int directionColonne;
 	final int ligne = 8;
 	final int colonne = 8;
+	boolean a;
 	String[][] tableauDeDame = new String[ligne][colonne];
 	
 	Scanner mouv = new Scanner(System.in);
@@ -65,7 +66,7 @@ public class JeuDeDame {
 				directionColonne = mouv.nextInt();
 				mouvPionBlanc( directionLigne, directionColonne);
 			} catch(Exception e) {
-				System.out.println("Error");
+				
 			}
 			
 				
@@ -74,34 +75,39 @@ public class JeuDeDame {
 	}
 	
 	public void mouvPionBlanc(int x, int y) {
-		for(Pion p : allPion) {	
-			if(p.getX() == x && p.getY() == y) {
-				if(p.getPion() == "  W  ") {
-					Utilitaires.demandeColonneMouv();
-					directionLigne = mouv.nextInt();
-					Utilitaires.demandeLigneMouv();
-					directionColonne = mouv.nextInt();
-					if((p.getX() + 1) == directionLigne && (p.getY() - 1) == directionColonne
-							|| (p.getX() - 1) == directionLigne && (p.getY() - 1) == directionColonne) {
-						tableauDeDame[p.getX()][p.getY()] = "  -  ";
-						p.setX(directionLigne);
-						p.setY(directionColonne);
-						tableauDeDame[p.getX()][p.getY()] = p.getPion();
-						b.fillTab(tableauDeDame, allPion);
+		do {
+			for(Pion p : allPion) {
+				if(p.getX() == x && p.getY() == y) {
+					a = true;
+					if(p.getPion() == "  W  ") {
+						Utilitaires.demandeColonneMouv();
+						directionLigne = mouv.nextInt();
+						Utilitaires.demandeLigneMouv();
+						directionColonne = mouv.nextInt();
+						if((p.getX() + 1) == directionLigne && (p.getY() - 1) == directionColonne
+								|| (p.getX() - 1) == directionLigne && (p.getY() - 1) == directionColonne) {
+							tableauDeDame[p.getX()][p.getY()] = "  -  ";
+							p.setX(directionLigne);
+							p.setY(directionColonne);
+							tableauDeDame[p.getX()][p.getY()] = p.getPion();
+							b.fillTab(tableauDeDame, allPion);
+							
+						} else {
+							System.out.println("Mauvais déplacement");
+							direction();
+						}
 					} else {
-						System.out.println("Mauvais déplacement");
+						System.out.println("Mauvais pion");
 						direction();
-					}
+					} 
 				} else {
-					System.out.println("Mauvais pion");
-					direction();
-				} 
-			} else if(p.getX() != x && p.getY() == y){
-				System.out.println();
-				
-			}
-
-		}		
+					a = false;
+				}
+			}	
+		} while(a == true);
+		System.out.print("Pas de pion");
+		direction();
+	
 	}
 
 }
