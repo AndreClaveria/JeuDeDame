@@ -4,17 +4,27 @@ public class Pion {
 	
 	int x;
 	int y;
+	String nomPion;
 	String pion;
 	boolean controlledByUser;
 	
-	public Pion(int x, int y, String pion, boolean controlledByUser) {
+	public Pion(int x, int y, String nomPion, String pion, boolean controlledByUser) {
 		this.x = x;
 		this.y = y;
+		this.nomPion = nomPion; 
 		this.pion = pion;
 		this.controlledByUser = controlledByUser;
 	}
 	
 	//TODO : Faire une condition qui permet d'enlever le pion quand il est mangé
+
+	public String getNomPion() {
+		return nomPion;
+	}
+
+	public void setNomPion(String nomPion) {
+		this.nomPion = nomPion;
+	}
 
 	public int getX() {
 		return x;
