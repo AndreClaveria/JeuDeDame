@@ -1,10 +1,6 @@
 package main;
 
-
-import java.util.Scanner;
-
 import model.Pion;
-import utils.CreatePerso;
 import utils.Utilitaires;
 
 public class JeuDeDame {
@@ -13,8 +9,6 @@ public class JeuDeDame {
 	AddPion plus = new AddPion();
 	Variables v = new Variables();
 
-	
-	
 	public void JeuDeGame() {
 		plus.addPion();
 		do {
@@ -24,7 +18,6 @@ public class JeuDeDame {
 	}
 	
 	public void direction() {
-		
 		Utilitaires.demandeColonne();
 		try {
 			v.directionLigne = v.mouv.nextInt();
@@ -56,37 +49,11 @@ public class JeuDeDame {
 			Utilitaires.demandeLigneMouv();
 			try {
 				v.directionColonne = v.mouv.nextInt();
+				System.out.println();
 				if(v.tour%2 == 0) {
-					if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
-						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
-						|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
-						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
-						v.tour = v.tour + 1;
-						b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
-						p.setX(v.directionLigne);
-						p.setY(v.directionColonne);
-						b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
-						b.fillTab(b.tableauDeDame, plus.allPion);		
-					} else {
-						System.out.println("Mauvais déplacement");
-						direction();
-					}
+					mouvDiagBlanc(p);
 				} else {
-					if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
-						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
-						|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
-						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
-						v.tour = v.tour + 1;
-						b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
-						p.setX(v.directionLigne);
-						p.setY(v.directionColonne);
-						b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
-						b.fillTab(b.tableauDeDame, plus.allPion);
-						
-					} else {
-						System.out.println("Mauvais déplacement");
-						direction();
-					}
+					mouvDiagNoir(p);
 				} 
 			} catch (Exception e) {
 				System.out.println("Mauvais Input");
@@ -98,6 +65,41 @@ public class JeuDeDame {
 			v.mouv.next();
 			direction();
 		}		
+	}
+	
+	public void mouvDiagBlanc(Pion p) {
+		if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
+				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+				|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
+				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+				v.tour = v.tour + 1;
+				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+				p.setX(v.directionLigne);
+				p.setY(v.directionColonne);
+				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				b.fillTab(b.tableauDeDame, plus.allPion);		
+			} else {
+				System.out.println("Mauvais déplacement");
+				direction();
+			}
+	}
+	
+	public void mouvDiagNoir(Pion p) {
+		if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
+				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+				|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
+				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+				v.tour = v.tour + 1;
+				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+				p.setX(v.directionLigne);
+				p.setY(v.directionColonne);
+				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				b.fillTab(b.tableauDeDame, plus.allPion);
+				
+			} else {
+				System.out.println("Mauvais déplacement");
+				direction();
+			}
 	}
 	
 	public void mouvPionBlanc(int x, int y) {
@@ -115,7 +117,9 @@ public class JeuDeDame {
 					v.a = false;
 				}
 			}
-			System.out.print("Pas de pion");
+			if(v.a == false) {
+				System.out.print("Pas de pion");
+			}
 		} while(v.a == true);
 		direction();
 	}
@@ -135,7 +139,9 @@ public class JeuDeDame {
 					v.a = false;
 				}
 			}
-			System.out.print("Pas de pion");
+			if(v.a == false) {
+				System.out.print("Pas de pion");
+			}
 		} while(v.a == true);
 		direction();
 	}	
