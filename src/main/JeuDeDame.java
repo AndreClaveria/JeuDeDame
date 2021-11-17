@@ -1,7 +1,6 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 import model.Pion;
@@ -11,103 +10,133 @@ import utils.Utilitaires;
 public class JeuDeDame {
 	
 	Board b = new Board();
-	int directionLigne;
-	int directionColonne;
-	final int ligne = 8;
-	final int colonne = 8;
-	boolean a;
-	String[][] tableauDeDame = new String[ligne][colonne];
+	AddPion plus = new AddPion();
+	Variables v = new Variables();
+
 	
-	Scanner mouv = new Scanner(System.in);
-	
-	
-	public ArrayList<Pion> allPion = new ArrayList<Pion>();
 	
 	public void JeuDeGame() {
-		
-		allPion.add(CreatePerso.p1);
-		allPion.add(CreatePerso.p2);
-		allPion.add(CreatePerso.p3);
-		allPion.add(CreatePerso.p4);
-		allPion.add(CreatePerso.p5);
-		allPion.add(CreatePerso.p6);
-		allPion.add(CreatePerso.p7);
-		allPion.add(CreatePerso.p8);
-		allPion.add(CreatePerso.p9);
-		allPion.add(CreatePerso.p10);
-		allPion.add(CreatePerso.p11);
-		allPion.add(CreatePerso.p12);
-		allPion.add(CreatePerso.p13);
-		allPion.add(CreatePerso.p14);
-		allPion.add(CreatePerso.p15);
-		allPion.add(CreatePerso.p16);
-		allPion.add(CreatePerso.p17);
-		allPion.add(CreatePerso.p18);
-		allPion.add(CreatePerso.p19);
-		allPion.add(CreatePerso.p20);
-		allPion.add(CreatePerso.p21);
-		allPion.add(CreatePerso.p22);
-		allPion.add(CreatePerso.p23);
-		allPion.add(CreatePerso.p24);
-		
+		plus.addPion();
 		do {
-			b.fillTab(tableauDeDame, allPion);
+			b.fillTab(b.tableauDeDame, plus.allPion);
 			direction();
 		}while(true);
 	}
 	
 	public void direction() {
+		
 		Utilitaires.demandeColonne();
-		
-		for(Pion p : allPion) {
+		try {
+			v.directionLigne = v.mouv.nextInt();
+			Utilitaires.demandeLigne();
 			try {
-				directionLigne = mouv.nextInt();
-				Utilitaires.demandeLigne();
-				directionColonne = mouv.nextInt();
-				mouvPionBlanc( directionLigne, directionColonne);
+				v.directionColonne = v.mouv.nextInt();
+				if(v.tour%2 == 0) {
+					mouvPionBlanc(v.directionLigne, v.directionColonne);
+					
+				} else {
+					mouvPionNoir(v.directionLigne, v.directionColonne);
+				}
 			} catch(Exception e) {
-				
+				System.out.println("Mauvais Input");
+				v.mouv.next();
+				direction();
 			}
-			
-				
+		} catch(Exception e) {
+			System.out.println("Mauvais Input");
+			v.mouv.next();
+			direction();
 		}
-		
+	}
+	
+	public void mouvOneCase(Pion p) {
+		Utilitaires.demandeColonneMouv();
+		try {
+			v.directionLigne = v.mouv.nextInt();
+			Utilitaires.demandeLigneMouv();
+			try {
+				v.directionColonne = v.mouv.nextInt();
+				if(v.tour%2 == 0) {
+					if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
+						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+						|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
+						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+						v.tour = v.tour + 1;
+						b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+						p.setX(v.directionLigne);
+						p.setY(v.directionColonne);
+						b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+						b.fillTab(b.tableauDeDame, plus.allPion);		
+					} else {
+						System.out.println("Mauvais déplacement");
+						direction();
+					}
+				} else {
+					if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
+						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+						|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
+						&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+						v.tour = v.tour + 1;
+						b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+						p.setX(v.directionLigne);
+						p.setY(v.directionColonne);
+						b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+						b.fillTab(b.tableauDeDame, plus.allPion);
+						
+					} else {
+						System.out.println("Mauvais déplacement");
+						direction();
+					}
+				} 
+			} catch (Exception e) {
+				System.out.println("Mauvais Input");
+				v.mouv.next();
+				direction();
+			}
+		} catch (Exception e) {
+			System.out.println("Mauvais Input");
+			v.mouv.next();
+			direction();
+		}		
 	}
 	
 	public void mouvPionBlanc(int x, int y) {
 		do {
-			for(Pion p : allPion) {
+			for(Pion p : plus.allPion) {
 				if(p.getX() == x && p.getY() == y) {
-					a = true;
+					v.a = true;
 					if(p.getPion() == "  W  ") {
-						Utilitaires.demandeColonneMouv();
-						directionLigne = mouv.nextInt();
-						Utilitaires.demandeLigneMouv();
-						directionColonne = mouv.nextInt();
-						if((p.getX() + 1) == directionLigne && (p.getY() - 1) == directionColonne
-								|| (p.getX() - 1) == directionLigne && (p.getY() - 1) == directionColonne) {
-							tableauDeDame[p.getX()][p.getY()] = "  -  ";
-							p.setX(directionLigne);
-							p.setY(directionColonne);
-							tableauDeDame[p.getX()][p.getY()] = p.getPion();
-							b.fillTab(tableauDeDame, allPion);
-							
-						} else {
-							System.out.println("Mauvais déplacement");
-							direction();
-						}
+						mouvOneCase(p);
 					} else {
-						System.out.println("Mauvais pion");
+						System.out.println("Choisir pion blanc");
 						direction();
 					} 
 				} else {
-					a = false;
+					v.a = false;
 				}
-			}	
-		} while(a == true);
-		System.out.print("Pas de pion");
+			}
+			System.out.print("Pas de pion");
+		} while(v.a == true);
 		direction();
-	
 	}
-
+	
+	public void mouvPionNoir(int x, int y) {
+		do {
+			for(Pion p : plus.allPion) {
+				if(p.getX() == x && p.getY() == y) {
+					v.a = true;
+					if(p.getPion() == "  N  ") {
+						mouvOneCase(p);
+					} else {
+						System.out.println("Choisir pion noir");
+						direction();
+					} 
+				} else {
+					v.a = false;
+				}
+			}
+			System.out.print("Pas de pion");
+		} while(v.a == true);
+		direction();
+	}	
 }

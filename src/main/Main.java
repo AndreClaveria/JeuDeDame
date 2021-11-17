@@ -6,11 +6,6 @@ public class Main {
 		JeuDeDame jDG = new JeuDeDame();
 		jDG.JeuDeGame();
 	}
-	
-	
-	
-	
-
 }
 
 

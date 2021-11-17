@@ -6,6 +6,10 @@ import model.Pion;
 
 public class Board {
 
+	public final int ligne = 8;
+	public final int colonne = 8;
+	public String[][] tableauDeDame = new String[ligne][colonne];
+	
 	public void printTab(String[][] tableauDeDame) {
 		DisplayRowIndex();
 		for(int i = 0; i < tableauDeDame.length; i++) {
