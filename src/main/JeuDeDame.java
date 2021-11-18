@@ -78,10 +78,20 @@ public class JeuDeDame {
 				p.setY(v.directionColonne);
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
 				b.fillTab(b.tableauDeDame, plus.allPion);		
+//			} else if (verifPionBlanc(p)){
+//				v.tour = v.tour + 1;
+//				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+//				b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] = "  -  ";
+//				p.setX(v.directionLigne);
+//				p.setY(v.directionColonne);
+//				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+//				b.fillTab(b.tableauDeDame, plus.allPion);
 			} else {
 				System.out.println("Mauvais déplacement");
 				direction();
 			}
+		
+		//CAPTURE if(b.tableauDeDame[v.directionLigne + ][v.directionLigne])
 	}
 	
 	public void mouvDiagNoir(Pion p) {
@@ -102,12 +112,31 @@ public class JeuDeDame {
 			}
 	}
 	
+//	public boolean verifPionBlanc(Pion p) {
+//		if((p.getX() + 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
+//				&& (b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] == "  n  ")
+//				|| (p.getX() - 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
+//				&& (b.tableauDeDame[v.directionLigne - 1][v.directionColonne - 1] == "  n  ")) {
+//			return true;
+////			v.tour = v.tour + 1;
+////			b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+////			b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] = "  -  ";
+////			p.setX(v.directionLigne);
+////			p.setY(v.directionColonne);
+////			b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+////			b.fillTab(b.tableauDeDame, plus.allPion);
+//		} else {
+//			return false;
+//		}
+//		
+//	}
+	
 	public void mouvPionBlanc(int x, int y) {
 		do {
 			for(Pion p : plus.allPion) {
 				if(p.getX() == x && p.getY() == y) {
 					v.a = true;
-					if(p.getPion() == "  W  ") {
+					if(p.getPion() == "  W  " || p.getPion() == "  w  ") {
 						mouvOneCase(p);
 					} else {
 						System.out.println("Choisir pion blanc");
@@ -129,7 +158,7 @@ public class JeuDeDame {
 			for(Pion p : plus.allPion) {
 				if(p.getX() == x && p.getY() == y) {
 					v.a = true;
-					if(p.getPion() == "  N  ") {
+					if(p.getPion() == "  N  " || p.getPion() == "  n  ") {
 						mouvOneCase(p);
 					} else {
 						System.out.println("Choisir pion noir");
