@@ -46,30 +46,37 @@ public class JeuDeDame {
 		allPion.add(CreatePerso.p24);
 		b.fillTab(tableauDeDame, allPion);
 	}
-	private void mouvMap() {
-		//faire un scanner, demander mouvement à utilisateur
+	
+	public static void recupIndex() {
 		
-		do{
-			System.out.println("\n\nSaisir mouvement (up:z , down:s, left:q, right:d).");
+	//TODO : récupérer l'index de la colonne et la ligne du pion à bouger.
 		
-			int mouvement;
-			//gerer la saisie clavier
-			
-				for(Pion perso : allPion) {
-					
-					    mouvement = Utilitaires.saisieMouv();
-					
-					}
-					mouvPion(pion,mouvement);
-				
-				
-				
-	b.fillTab(tableauDeDame, allPion);
-			
-		}
-
-		while(true);
 	}
+
+//	private void mouvMap() {
+//		//faire un scanner, demander mouvement à utilisateur
+//		
+//		do{
+//			System.out.println("\n\nSaisir mouvement (up:z , down:s, left:q, right:d).");
+//		
+//			int mouvement;
+//			//gerer la saisie clavier
+//			
+//				for(Pion perso : allPion) {
+//					
+//					    mouvement = Utilitaires.saisieMouv();
+//					
+//					}
+//					mouvPion(pion,mouvement);
+//				
+//				
+//				
+//	b.fillTab(tableauDeDame, allPion);
+//			
+//		}
+//
+//		while(true);
+//	}
 	
 	
 }
