@@ -28,4 +28,39 @@ public class Utilitaires {
 		System.out.print("Votre choix(0-7) : ");
 		
 	}
+	
+	public static void BlackTurn() {
+	    System.out.println("#######################################################");
+	    System.out.println("              BLACK'S TURN");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void Whiteturn() {
+	    System.out.println("#######################################################");
+	    System.out.println("              WHITE'S TURN");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void BlackWin() {
+	    System.out.println("#######################################################");
+	    System.out.println("UWU !!! BLACK HAS WON !!!");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void WhiteWin() {
+	    System.out.println("#######################################################");
+	    System.out.println("UWU !!! WHITE HAS WON !!!");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void Welcome() {
+	    System.out.println("#######################################################");
+	    System.out.println("Welcome, in our Game made by : ");
+	        System.out.println("Us Hehe !");
+	        System.out.println("-------------------------------------------------------");
+	        System.out.println("The White will strart");
+	        System.out.println("Make sure to didn't write another thing that you need to");
+	        System.out.println("Have Fun !!");
+	    System.out.println("#######################################################");    
+	}
 }

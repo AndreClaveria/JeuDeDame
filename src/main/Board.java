@@ -63,6 +63,31 @@ public class Board {
 		
 		printTab(tableauDeDame);
 	}
+	
+	public void fillTab2(String[][] tableauDeDame) {
+		
+		
+		for(int i = 0 ; i < tableauDeDame.length ; i++) {
+			if(i%2 == 0) {
+				for(int j = 0 ; j < tableauDeDame[i].length ; j++) {
+					if(j%2 == 0) {
+						tableauDeDame[i][j] = "     ";
+					} else {
+						tableauDeDame[i][j] = "  -  ";
+					}
+				}
+			} else {
+				for(int j = 0 ; j < tableauDeDame[i].length ; j++) {
+					if(j%2 != 0) {
+						tableauDeDame[i][j] = "     ";
+					} else {
+						tableauDeDame[i][j] = "  -  ";
+					}	
+				}
+			}
+			
+		}
+	}
 			
 	public void DrawHorizontalLine() {        
 		System.out.println("   _______________________________________________");   
