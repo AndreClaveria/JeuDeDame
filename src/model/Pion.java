@@ -57,5 +57,7 @@ public class Pion {
 	public void setControlledByUser(boolean controlledByUser) {
 		this.controlledByUser = controlledByUser;
 	}
+
+	
 	
 }

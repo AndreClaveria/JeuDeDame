@@ -9,6 +9,8 @@ import utils.CreatePerso;
 public class AddPion {
 
 	public ArrayList<Pion> allPion = new ArrayList<Pion>();
+	public ArrayList<Pion> deadPawnWhite = new ArrayList<Pion>();
+	public ArrayList<Pion> deadPawnBlack= new ArrayList<Pion>();
 	
 	public void addPion() {
 		allPion.add(CreatePerso.p1);
@@ -35,5 +37,37 @@ public class AddPion {
 		allPion.add(CreatePerso.p22);
 		allPion.add(CreatePerso.p23);
 		allPion.add(CreatePerso.p24);
+	}
+	
+	public void PrintBlackDeadArray(Pion p) {
+	    System.out.println("-------------------------------------------------------");
+	    PrintArrayListBlack(deadPawnBlack);
+	    System.out.println("-------------------------------------------------------");
+	        
+	}
+	
+	public void PrintArrayListBlack(ArrayList<Pion> jeVeuxDormir) {
+		System.out.println("Dead Black Pawn : ");
+        for(int i = 0; i < jeVeuxDormir.size(); i++) {
+        	
+            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
+            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+            		+ ")");
+            
+        }
+	}
+	public void PrintWhiteDeadArray(Pion p) {
+	    System.out.println("-------------------------------------------------------");
+	    PrintArrayListWhite(deadPawnWhite);
+	    System.out.println("-------------------------------------------------------");
+	}
+	
+	public void PrintArrayListWhite(ArrayList<Pion> jeVeuxDormir) {
+		System.out.println("Dead White Pawn : ");
+        for(int i = 0; i < jeVeuxDormir.size(); i++) {
+            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
+            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+            		+ ")");    
+        }
 	}
 }

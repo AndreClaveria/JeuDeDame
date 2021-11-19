@@ -1,6 +1,9 @@
 package utils;
 
+import main.AddPion;
+
 public class Utilitaires {
+	
 	
 	public static void demandeLigne() {
 		System.out.println();
@@ -63,4 +66,6 @@ public class Utilitaires {
 	        System.out.println("Have Fun !!");
 	    System.out.println("#######################################################");    
 	}
+	
+
 }
