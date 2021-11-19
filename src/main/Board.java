@@ -32,6 +32,8 @@ public class Board {
 		DisplayRowIndex();
 	}
 	
+	
+	
 	public void fillTab(String[][] tableauDeDame, ArrayList<Pion> pionPlacement) {
 		
 		

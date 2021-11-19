@@ -1,6 +1,7 @@
 package main;
 
 import model.Pion;
+import utils.CreatePerso;
 import utils.Utilitaires;
 
 public class JeuDeDame {
@@ -8,6 +9,7 @@ public class JeuDeDame {
 	Board b = new Board();
 	AddPion plus = new AddPion();
 	Variables v = new Variables();
+	CanMove cm = new CanMove();
 
 	public void JeuDeGame() {
 		plus.addPion();
@@ -51,6 +53,7 @@ public class JeuDeDame {
 				v.directionColonne = v.mouv.nextInt();
 				System.out.println();
 				if(v.tour%2 == 0) {
+					
 					mouvDiagBlanc(p);
 				} else {
 					mouvDiagNoir(p);
@@ -69,68 +72,83 @@ public class JeuDeDame {
 	
 	public void mouvDiagBlanc(Pion p) {
 		if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
-				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
-				|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
-				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+			|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
+			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")) {
 				v.tour = v.tour + 1;
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
-				b.fillTab(b.tableauDeDame, plus.allPion);		
-//			} else if (verifPionBlanc(p)){
-//				v.tour = v.tour + 1;
-//				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
-//				b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] = "  -  ";
-//				p.setX(v.directionLigne);
-//				p.setY(v.directionColonne);
-//				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
-//				b.fillTab(b.tableauDeDame, plus.allPion);
-			} else {
+				b.fillTab(b.tableauDeDame, plus.allPion);	
+		} else if((p.getX() + 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
+				&& (b.tableauDeDame[p.getX() + 1][p.getY() - 1] == "  n  ")
+				|| ((p.getX() - 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne)
+				&& b.tableauDeDame[p.getX() - 1][p.getY() - 1] == "  n  ") {
+				if (b.tableauDeDame[p.getX() + 1][p.getY() - 1] == "  n  ") {
+					v.tour = v.tour + 1;
+					plus.allPion.remove(13);
+					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+					p.setX(v.directionLigne);
+					p.setY(v.directionColonne);
+					b.fillTab(b.tableauDeDame, plus.allPion);
+					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				} else if (b.tableauDeDame[p.getX() - 1][p.getY() - 1] == "  n  "){
+					v.tour = v.tour + 1;
+					plus.allPion.remove(13);
+					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+					p.setX(v.directionLigne);
+					p.setY(v.directionColonne);
+					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+					b.fillTab(b.tableauDeDame, plus.allPion);
+				}
+	
+		} else {
 				System.out.println("Mauvais déplacement");
 				direction();
 			}
-		
-		//CAPTURE if(b.tableauDeDame[v.directionLigne + ][v.directionLigne])
 	}
 	
 	public void mouvDiagNoir(Pion p) {
 		if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
-				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
-				|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
-				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")){
+			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
+			|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
+			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")) {	
 				v.tour = v.tour + 1;
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
 				b.fillTab(b.tableauDeDame, plus.allPion);
+		} 
+		else if((p.getX() + 2) == v.directionLigne && (p.getY() + 2) == v.directionColonne
+				&& (b.tableauDeDame[p.getX() + 1][p.getY() + 1] == "  w  ")
+				|| ((p.getX() - 2) == v.directionLigne && (p.getY() + 2) == v.directionColonne)
+				&& b.tableauDeDame[p.getX() - 1][p.getY() + 1] == "  w  ") {
+				if (b.tableauDeDame[p.getX() + 1][p.getY() + 1] == "  w  ") {
+					v.tour = v.tour + 1;
 				
-			} else {
-				System.out.println("Mauvais déplacement");
-				direction();
-			}
+					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+					p.setX(v.directionLigne);
+					p.setY(v.directionColonne);
+					b.fillTab(b.tableauDeDame, plus.allPion);
+					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				} else if (b.tableauDeDame[p.getX() - 1][p.getY() + 1] == "  n  "){
+					v.tour = v.tour + 1;
+					
+					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+					p.setX(v.directionLigne);
+					p.setY(v.directionColonne);
+					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+					b.fillTab(b.tableauDeDame, plus.allPion);
+				}
+	
+		} else {
+			System.out.println("Mauvais déplacement");
+			direction();
+		}
 	}
-	
-//	public boolean verifPionBlanc(Pion p) {
-//		if((p.getX() + 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
-//				&& (b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] == "  n  ")
-//				|| (p.getX() - 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
-//				&& (b.tableauDeDame[v.directionLigne - 1][v.directionColonne - 1] == "  n  ")) {
-//			return true;
-////			v.tour = v.tour + 1;
-////			b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
-////			b.tableauDeDame[v.directionLigne + 1][v.directionColonne - 1] = "  -  ";
-////			p.setX(v.directionLigne);
-////			p.setY(v.directionColonne);
-////			b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
-////			b.fillTab(b.tableauDeDame, plus.allPion);
-//		} else {
-//			return false;
-//		}
-//		
-//	}
-	
+
 	public void mouvPionBlanc(int x, int y) {
 		do {
 			for(Pion p : plus.allPion) {
