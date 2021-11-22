@@ -1,10 +1,14 @@
 package utils;
 
-import main.AddPion;
+import main.Menu;
+
 
 public class Utilitaires {
 	
+	static Menu m = new Menu();
 	
+	static String Blanc = "";
+	static String Black = "";
 	public static void demandeLigne() {
 		System.out.println();
 		System.out.println("2) L'index de la ligne du pion que vous voulez déplacer.");
@@ -34,38 +38,45 @@ public class Utilitaires {
 	
 	public static void BlackTurn() {
 	    System.out.println("#######################################################");
-	    System.out.println("              BLACK'S TURN");
+	    System.out.println("              BLACK'S TURN (" + Black + ")");
 	    System.out.println("#######################################################");
 	        
 	}
 	public static void Whiteturn() {
 	    System.out.println("#######################################################");
-	    System.out.println("              WHITE'S TURN");
+	    System.out.println("              WHITE'S TURN (" + Blanc + ")");
 	    System.out.println("#######################################################");
 	        
 	}
 	public static void BlackWin() {
-	    System.out.println("#######################################################");
-	    System.out.println("UWU !!! BLACK HAS WON !!!");
-	    System.out.println("#######################################################");
-	        
-	}
-	public static void WhiteWin() {
-	    System.out.println("#######################################################");
-	    System.out.println("UWU !!! WHITE HAS WON !!!");
-	    System.out.println("#######################################################");
-	        
-	}
+        System.out.println("#######################################################");
+        System.out.println("UWU !!! BLACK'S HAS WON !!! GG à "  + Black.toUpperCase());
+        System.out.println("#######################################################");
+
+    }
+    public static void WhiteWin() {
+        System.out.println("#######################################################");
+        System.out.println("UWU !!! WHITE'S HAS WON !!! GG à " + Blanc.toUpperCase());
+        System.out.println("#######################################################");
+
+    }
 	public static void Welcome() {
 	    System.out.println("#######################################################");
-	    System.out.println("Welcome, in our Game made by : ");
-	        System.out.println("Us Hehe !");
+	    System.out.println("Bienvenue, in our Game fait par : ");
+	        System.out.println("Us Hehe(André, Vencatveer, Florian) !");
 	        System.out.println("-------------------------------------------------------");
-	        System.out.println("The White will strart");
-	        System.out.println("Make sure to didn't write another thing that you need to");
-	        System.out.println("Have Fun !!");
-	    System.out.println("#######################################################");    
+	        System.out.println("Soyez sure de ne write other thing dont vous avez pas besoin");
+	        System.out.println("Have Fun!!");
+	        System.out.print("White nickname : ");
+	        Blanc = m.AskBlanc(); 
+	        System.out.println("And your adversaire qui sont les Black!!");
+			System.out.print("Black nickname : ");
+			Black = m.AskBlack();
+			System.out.println("Ce duel opposera alors " + Blanc + " against " + Black + "!");
+			WhiteWin();
 	}
+	
+	
 	
 
 }

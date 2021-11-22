@@ -1,6 +1,5 @@
 package main;
 
-import model.Pion;
 import utils.Utilitaires;
 
 public class CanMove {
@@ -14,6 +13,8 @@ public class CanMove {
 			Utilitaires.BlackTurn();
 		}
 	}
+	
+	
 	
 
 }

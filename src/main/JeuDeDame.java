@@ -1,7 +1,7 @@
 package main;
 
 import model.Pion;
-import utils.CreatePerso;
+
 import utils.Utilitaires;
 
 public class JeuDeDame {
@@ -10,10 +10,11 @@ public class JeuDeDame {
 	AddPion plus = new AddPion();
 	Variables v = new Variables();
 	CanMove cm = new CanMove();
-	
+	Menu m = new Menu();
 	
 
 	public void JeuDeGame() {
+		Utilitaires.Welcome();
 		plus.addPion();
 		do {
 			cm.whoseTurn(v.tour);
@@ -21,6 +22,8 @@ public class JeuDeDame {
 			direction();
 		}while(true);
 	}
+	
+	
 	
 
 	
@@ -58,10 +61,9 @@ public class JeuDeDame {
 				System.out.println();
 				if(v.tour%2 == 0) {
 					mouvDiagBlanc(p);
-					System.out.println("ok");
+					
 				} else {
 					mouvDiagNoir(p);
-					System.out.println("ok");
 				} 
 			} catch (Exception e) {
 				System.out.println("Mauvais Input");
@@ -134,6 +136,13 @@ public class JeuDeDame {
 			}
 	}
 	
+//	public void verifTableau() {
+//		for(Pion pion : plus.allPion) {
+//			
+//			
+//		}
+//	}
+	
 	public void mouvDiagNoir(Pion p) {
 		if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
@@ -203,19 +212,20 @@ public class JeuDeDame {
 					if(p.getPion() == "  W  " || p.getPion() == "  w  ") {
 						mouvOneCase(p);
 						v.a = false;
+						
 					} else {
 						System.out.println("Choisir pion blanc");
 						direction();
 					} 
-				} else {
-					v.a = false;
 				}
 			}
 			
+			
+			
 		} while(v.a == true);
-		if(v.a == false) {
-			System.out.print("Pas de pion");
-		}
+		System.out.println();
+		System.out.println("Fin de Tour ou pas de pion");
+		System.out.println();
 		cm.whoseTurn(v.tour);
 		direction();
 	}
@@ -227,21 +237,19 @@ public class JeuDeDame {
 					v.a = true;
 					if(p.getPion() == "  N  " || p.getPion() == "  n  ") {
 						mouvOneCase(p);
+						v.a = false;
 					} else {
 						System.out.println("Choisir pion noir");
 						direction();
 					} 
-				} else {
-					v.a = false;
-				}
+				} 
 				
-			}
-			if(v.a == false) {
-				System.out.print("Pas de pion");
 			}
 			
 		} while(v.a == true);
-		
+		System.out.println();
+		System.out.println("Fin de Tour ou pas de pion");
+		System.out.println();
 		cm.whoseTurn(v.tour);
 		direction();
 	}	
