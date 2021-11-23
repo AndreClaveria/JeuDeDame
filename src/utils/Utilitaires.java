@@ -1,7 +1,14 @@
 package utils;
 
+import main.Menu;
+
+
 public class Utilitaires {
 	
+	static Menu m = new Menu();
+	
+	static String Blanc = "";
+	static String Black = "";
 	public static void demandeLigne() {
 		System.out.println();
 		System.out.println("2) L'index de la ligne du pion que vous voulez déplacer.");
@@ -28,4 +35,73 @@ public class Utilitaires {
 		System.out.print("Votre choix(0-7) : ");
 		
 	}
+	
+	public static void BlackTurn() {
+	    System.out.println("#######################################################");
+	    System.out.println("              BLACK'S TURN (" + Black + ")");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void Whiteturn() {
+	    System.out.println("#######################################################");
+	    System.out.println("              WHITE'S TURN (" + Blanc + ")");
+	    System.out.println("#######################################################");
+	        
+	}
+	public static void BlackWin() {
+        System.out.println("#######################################################");
+        System.out.println("UWU !!! BLACK'S HAS WON !!! GG à "  + Black.toUpperCase());
+        System.out.println("#######################################################");
+
+    }
+    public static void WhiteWin() {
+        System.out.println("#######################################################");
+        System.out.println("UWU !!! WHITE'S HAS WON !!! GG à " + Blanc.toUpperCase());
+        System.out.println("#######################################################");
+
+    }
+	public static void Welcome() {
+	    System.out.println("#######################################################");
+	    System.out.println("Bienvenue, in our Game fait par : ");
+	        System.out.println("Us Hehe(André, Vencatveer, Florian) !");
+	        System.out.println("----------------------------------------------------------");
+	        System.out.println("Soyez sure de ne pas write other thing that you don't need");
+	        System.out.println("Have Fun!!");
+	        System.out.print("White nickname : ");
+	        Blanc = m.AskBlanc(); 
+	        System.out.println("And your adversaire qui sont les Black!!");
+			System.out.print("Black nickname : ");
+			Black = m.AskBlack();
+			System.out.println("Ce duel opposera alors " + Blanc + " against " + Black + "!");
+			System.out.println("----------------------------------------------------------");
+	}
+	
+	public static void BadInput() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Mauvais Input");
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	public static void BadMove() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Mauvais déplacement");
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	public static void BadPionBlanc() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Choose a White Pawn");
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	public static void BadPionBlack() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Choose a Black Pawn");
+		System.out.println("---------------------------------------------------------");
+		
+	}
+	
+	
+	
+
 }
