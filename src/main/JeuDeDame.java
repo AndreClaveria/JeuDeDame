@@ -33,10 +33,8 @@ public class JeuDeDame {
 			try {
 				v.directionColonne = v.mouv.nextInt();
 				if(v.tour%2 == 0) {
-					
 					mouvPionBlanc(v.directionLigne, v.directionColonne);
 				} else {
-					
 					mouvPionNoir(v.directionLigne, v.directionColonne);
 				}
 			} catch(Exception e) {
@@ -83,14 +81,12 @@ public class JeuDeDame {
 	}
 	
 	public void mouvDiagBlanc(Pion p) {
-		mangerUnBlack(v.directionLigne, v.directionColonne);
 		if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
 			|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")) {
 				
 				plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-				
 				v.tour = v.tour + 1;
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
@@ -109,17 +105,8 @@ public class JeuDeDame {
 				&& b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ") {
 				
 				plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-				
 				v.tour = v.tour + 1;
-				for(Pion pion : plus.allPion) {
-                    if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()-1 )) {
-                        
-                        plus.allPion.remove(pion);
-                        plus.deadPawnBlack.add(pion);
-                        plus.PrintBlackDeadArray(pion);
-                        break;
-                    }
-                }
+				eatBlackPawn(p);
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
@@ -131,19 +118,8 @@ public class JeuDeDame {
 			} else if (b.tableauDeDame[p.getX() - 1][p.getY() - 1] == "  n  "
 					&& b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  "){
 					plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-				
 					v.tour = v.tour + 1;
-					for(Pion pion : plus.allPion) {
-	                    if((pion.getX() == p.getX() - 1) && (pion.getY() == p.getY()-1 )) {
-	                    	
-	                        plus.allPion.remove(pion);
-	                        plus.deadPawnBlack.add(pion);
-	                        plus.PrintBlackDeadArray(pion);
-	                        break;
-	                    }
-	                }
-					
-					
+					eatBlackPawn(p);				
 					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 					p.setX(v.directionLigne);
 					p.setY(v.directionColonne);
@@ -164,21 +140,38 @@ public class JeuDeDame {
 			}
 	}
 	
-//	public void verifTableau() {
-//		for(Pion pion : plus.allPion) {
-//			
-//			
-//		}
-//	}
+	public void eatBlackPawn(Pion p) {
+		for(Pion pion : plus.allPion) {
+            if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()-1 ) || (pion.getX() == p.getX()-1) && (pion.getY() == p.getY()-1 )) {
+                
+                plus.allPion.remove(pion);
+                plus.deadPawnBlack.add(pion);
+                plus.PrintBlackDeadArray(pion);
+                break;
+            }
+        }
+	}
+	
+	public void eatWhitePawn(Pion p) {
+		for(Pion pion : plus.allPion) {
+            if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()+1 ) || (pion.getX() == p.getX()-1) && (pion.getY() == p.getY()+1 )) {
+                
+                plus.allPion.remove(pion);
+                plus.deadPawnWhite.add(pion);
+                plus.PrintWhiteDeadArray(pion);
+                break;
+            }
+        }
+	}
+			
+
 	
 	public void mouvDiagNoir(Pion p) {
-		mangerUnBlanc(v.directionLigne, v.directionColonne);
 		if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
 			|| (p.getX() - 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")) {	
 				plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-				
 				v.tour = v.tour + 1;
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
@@ -194,18 +187,8 @@ public class JeuDeDame {
 				if (b.tableauDeDame[p.getX() + 1][p.getY() + 1] == "  w  "
 					&& b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ") {
 					plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-					
 					v.tour = v.tour + 1;
-					for(Pion pion : plus.allPion) {	
-	                    if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()+1 )) {            
-	                        plus.allPion.remove(pion);
-	                        plus.deadPawnWhite.add(pion);
-	                        plus.PrintWhiteDeadArray(pion);
-	                        break;
-	                    }
-
-	                }
-					
+					eatWhitePawn(p);
 					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 					p.setX(v.directionLigne);
 					p.setY(v.directionColonne);
@@ -218,18 +201,8 @@ public class JeuDeDame {
 				} else if (b.tableauDeDame[p.getX() - 1][p.getY() + 1] == "  w  "
 						&& b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  "){
 					plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
-				
 					v.tour = v.tour + 1;
-					for(Pion pion : plus.allPion) {
-	                    if((pion.getX() == p.getX()-1) && (pion.getY() == p.getY()+1 )) {
-	                        
-	                        plus.allPion.remove(pion);
-	                        plus.deadPawnWhite.add(pion);
-	                        plus.PrintWhiteDeadArray(pion);
-	                        break;
-	                    }
-	                }
-					
+					eatWhitePawn(p);
 					b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 					p.setX(v.directionLigne);
 					p.setY(v.directionColonne);
@@ -247,32 +220,6 @@ public class JeuDeDame {
 			Utilitaires.BadMove();
 			b.fillTab(b.tableauDeDame, plus.allPion);
 			direction();
-		}
-	}
-	public void mangerUnBlanc(int ligne, int colonne) {
-		for(Pion p : plus.allPion) {
-			if(p.getPion() == "  n  " ) {
-				while((p.getX() != ligne) && (p.getY() != colonne)) {
-					System.out.println(p.getPion());
-					System.out.println(p.getNomPion());
-					System.out.println("Vous pouvez/devez manger un pion Blanc");
-					direction();
-				}
-
-			}
-		}
-	}
-	public void mangerUnBlack(int ligne, int colonne) {
-		for(Pion p : plus.allPion) {
-			if(p.getPion() == "  w  ") {
-				while((p.getX() != ligne) && (p.getY() != colonne)) {
-					System.out.println(p.getPion());
-					System.out.println(p.getNomPion());
-					System.out.println("Vous pouvez/devez manger un pion Black");
-					direction();
-				}
-           
-			}
 		}
 	}
 
@@ -341,4 +288,28 @@ public class JeuDeDame {
 		direction();
 	}	
 	
+//	public void mangerUnBlanc(int ligne, int colonne) {
+//		for(Pion p : plus.allPion) {
+//			if(p.getPion() == "  n  " ) {
+//				while((p.getX() != ligne) && (p.getY() != colonne)) {
+//					System.out.println(p.getPion());
+//					System.out.println(p.getNomPion());
+//					System.out.println("Vous pouvez/devez manger un pion Blanc");
+//					direction();
+//				}
+//
+//			}
+//		}
+//	}
+	
+//	if(p.getY() - 1 == 0 && p.getPion() == "  w  ") {
+//		plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
+//		v.tour = v.tour + 1;
+//		b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
+//		p.setX(v.directionLigne);
+//		p.setY(v.directionColonne);
+//		p.setPion("  W  ");
+//		System.out.println(p.getPion());
+//		b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+//	}
 }
