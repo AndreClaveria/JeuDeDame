@@ -85,13 +85,16 @@ public class JeuDeDame {
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
 			|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
 			&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")) {
-				pawnBecomeBeg();
+				
 				plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
 				v.tour = v.tour + 1;
 				b.tableauDeDame[p.getX()][p.getY()] = "  -  ";
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
+				
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				
+				pawnBecomeBeg();
 			
 				b.fillTab(b.tableauDeDame, plus.allPion);	
 		} else if((p.getX() + 2) == v.directionLigne && (p.getY() - 2) == v.directionColonne
@@ -100,6 +103,7 @@ public class JeuDeDame {
 				&& b.tableauDeDame[p.getX() - 1][p.getY() - 1] == "  n  ") {
 			if (b.tableauDeDame[p.getX() + 1][p.getY() - 1] == "  n  "
 				&& b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ") {
+				
 				plus.MoveOfPawn(p.getX(), p.getY(), v.directionLigne, v.directionColonne);
 				v.tour = v.tour + 1;
 				for(Pion pion : plus.allPion) {
@@ -115,6 +119,7 @@ public class JeuDeDame {
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				pawnBecomeBeg();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 				cm.whoseTurn(v.tour);
 				direction();
@@ -136,7 +141,9 @@ public class JeuDeDame {
 					p.setX(v.directionLigne);
 					p.setY(v.directionColonne);
 					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+					pawnBecomeBeg();
 					b.fillTab(b.tableauDeDame, plus.allPion);
+					
 					cm.whoseTurn(v.tour);
 					direction();
 			} else {
@@ -168,6 +175,7 @@ public class JeuDeDame {
 				p.setX(v.directionLigne);
 				p.setY(v.directionColonne);
 				b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+				pawnBecomeBeg();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 		} 
 		else if((p.getX() + 2) == v.directionLigne && (p.getY() + 2) == v.directionColonne
@@ -192,6 +200,7 @@ public class JeuDeDame {
 					p.setY(v.directionColonne);
 					
 					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+					pawnBecomeBeg();
 					b.fillTab(b.tableauDeDame, plus.allPion);
 					cm.whoseTurn(v.tour);
 					direction();
@@ -212,6 +221,7 @@ public class JeuDeDame {
 					p.setX(v.directionLigne);
 					p.setY(v.directionColonne);
 					b.tableauDeDame[p.getX()][p.getY()] = p.getPion();
+					pawnBecomeBeg();
 					b.fillTab(b.tableauDeDame, plus.allPion);
 					cm.whoseTurn(v.tour);
 					direction();
@@ -256,10 +266,12 @@ public class JeuDeDame {
 	
 	public void pawnBecomeBeg() {
 		for(Pion p : plus.allPion) {
-			if((p.getPion() == "  w  ") && (p.getY() - 1 == 0)) {
+			if((p.getPion() == "  w  ") && (p.getY() == 0)) {
 				p.setPion("  W  ");
-			} else if ((p.getPion() == "  n  ") && (p.getY() + 1 == 7)){
+				plus.PawnBecomeQueen(p.getX(), p.getY());
+			} else if ((p.getPion() == "  n  ") && (p.getY() == 7)){
 				p.setPion("  N  ");
+				plus.PawnBecomeQueen(p.getX(), p.getY());
 			}
 		}
 		

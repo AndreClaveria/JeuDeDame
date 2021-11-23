@@ -77,4 +77,10 @@ public class AddPion {
 	    System.out.println("(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")");
 	    System.out.println("-------------------------------------------------------");
 	}
+	
+	public void PawnBecomeQueen(int newX, int newY ) {
+		System.out.println("-------------------------------------------------------");
+	    System.out.println("(" + newX + "," + newY + ") est devenu une reine");
+	    System.out.println("-------------------------------------------------------");
+	}
 }
