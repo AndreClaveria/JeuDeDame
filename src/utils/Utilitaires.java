@@ -64,8 +64,8 @@ public class Utilitaires {
 	    System.out.println("#######################################################");
 	    System.out.println("Bienvenue, in our Game fait par : ");
 	        System.out.println("Us Hehe(André, Vencatveer, Florian) !");
-	        System.out.println("-------------------------------------------------------");
-	        System.out.println("Soyez sure de ne write other thing dont vous avez pas besoin");
+	        System.out.println("----------------------------------------------------------");
+	        System.out.println("Soyez sure de ne pas write other thing that you don't need");
 	        System.out.println("Have Fun!!");
 	        System.out.print("White nickname : ");
 	        Blanc = m.AskBlanc(); 
@@ -73,10 +73,33 @@ public class Utilitaires {
 			System.out.print("Black nickname : ");
 			Black = m.AskBlack();
 			System.out.println("Ce duel opposera alors " + Blanc + " against " + Black + "!");
-			WhiteWin();
+			System.out.println("----------------------------------------------------------");
 	}
 	
+	public static void BadInput() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Mauvais Input");
+		System.out.println("---------------------------------------------------------");
+	}
 	
+	public static void BadMove() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Mauvais déplacement");
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	public static void BadPionBlanc() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Choose a White Pawn");
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	public static void BadPionBlack() {
+		System.out.println("---------------------------------------------------------");
+		System.out.println("Choose a Black Pawn");
+		System.out.println("---------------------------------------------------------");
+		
+	}
 	
 
 }

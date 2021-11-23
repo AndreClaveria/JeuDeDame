@@ -12,6 +12,7 @@ public class AddPion {
 	public ArrayList<Pion> deadPawnWhite = new ArrayList<Pion>();
 	public ArrayList<Pion> deadPawnBlack= new ArrayList<Pion>();
 	
+	
 	public void addPion() {
 		allPion.add(CreatePerso.p1);
 		allPion.add(CreatePerso.p2);
@@ -69,5 +70,11 @@ public class AddPion {
             		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
             		+ ")");    
         }
+	}
+	
+	public void MoveOfPawn(int oldX, int oldY, int newX, int newY ) {
+		System.out.println("-------------------------------------------------------");
+	    System.out.println("(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")");
+	    System.out.println("-------------------------------------------------------");
 	}
 }
