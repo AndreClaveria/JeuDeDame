@@ -1,5 +1,10 @@
 package utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import main.Menu;
 
 
@@ -101,7 +106,22 @@ public class Utilitaires {
 		
 	}
 	
-	
+	public static void write(String strToPrint, String fileName) {	
+		BufferedWriter writer = null;
+		try {
+			File file = new File(fileName);
+			
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+			writer = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+			writer.write(strToPrint);
+			writer.close();
+		}
+		catch (IOException e) {
+				e.printStackTrace();
+		}
+	}
 	
 
 }

@@ -1,13 +1,17 @@
 package main;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
 import model.Pion;
 import utils.CreatePerso;
+import utils.Utilitaires;
 
 public class AddPion {
 
+	public String fichier = "fichier.txt";
+	
 	public ArrayList<Pion> allPion = new ArrayList<Pion>();
 	public ArrayList<Pion> deadPawnWhite = new ArrayList<Pion>();
 	public ArrayList<Pion> deadPawnBlack= new ArrayList<Pion>();
@@ -73,8 +77,18 @@ public class AddPion {
 	}
 	
 	public void MoveOfPawn(int oldX, int oldY, int newX, int newY ) {
+		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
+		Utilitaires.write(strToPrint, fichier);
 		System.out.println("-------------------------------------------------------");
-	    System.out.println("(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")");
+	    System.out.println(strToPrint);
+	    System.out.println("-------------------------------------------------------");
+	}
+	
+	public void writeInFile(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
+		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
+		Utilitaires.write(strToPrint, fichier);
+		System.out.println("-------------------------------------------------------");
+	    System.out.println(strToPrint);
 	    System.out.println("-------------------------------------------------------");
 	}
 	
