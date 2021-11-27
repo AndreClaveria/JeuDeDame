@@ -158,13 +158,13 @@ public class JeuDeDame {
 	public void eatBlackPawn(Pion p, int oldX, int oldY, int newX, int newY) {
 		for(Pion pion : plus.allPion) {
             if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()-1 )) {
-            	plus.writeInFile(oldX, oldY, newX, newY, p.getX()+1, p.getY()-1);
+            	plus.eatAPawn(oldX, oldY, newX, newY, p.getX()+1, p.getY()-1);
                 plus.allPion.remove(pion);
                 plus.deadPawnBlack.add(pion);
                 plus.printBlackDeadArray(pion);
                 break;
             } else if ((pion.getX() == p.getX()-1) && (pion.getY() == p.getY()-1 )){
-            	plus.writeInFile(oldX, oldY, newX, newY, p.getX()-1, p.getY()-1);
+            	plus.eatAPawn(oldX, oldY, newX, newY, p.getX()-1, p.getY()-1);
                 plus.allPion.remove(pion);
                 plus.deadPawnBlack.add(pion);
                 plus.printBlackDeadArray(pion);
@@ -176,13 +176,13 @@ public class JeuDeDame {
 	public void eatWhitePawn(Pion p, int oldX, int oldY, int newX, int newY) {
 		for(Pion pion : plus.allPion) {
             if((pion.getX() == p.getX()+1) && (pion.getY() == p.getY()+1 )) {
-                plus.writeInFile(oldX, oldY, newX, newY, p.getX()+1, p.getY()+1);
+                plus.eatAPawn(oldX, oldY, newX, newY, p.getX()+1, p.getY()+1);
                 plus.allPion.remove(pion);
                 plus.deadPawnWhite.add(pion);
                 plus.printWhiteDeadArray(pion);
                 break;
             } else if ((pion.getX() == p.getX()-1) && (pion.getY() == p.getY()+1 )) {
-            	 plus.writeInFile(oldX, oldY, newX, newY, p.getX()-1, p.getY()+1);
+            	 plus.eatAPawn(oldX, oldY, newX, newY, p.getX()-1, p.getY()+1);
                  plus.allPion.remove(pion);
                  plus.deadPawnWhite.add(pion);
                  plus.printWhiteDeadArray(pion);

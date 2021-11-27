@@ -138,10 +138,20 @@ public class Utilitaires {
 	
     public static void write(String strToPrint, String fileName) {
         try {
-          FileWriter myWriter = new FileWriter(fileName);
-          myWriter.write(strToPrint);
+          FileWriter myWriter = new FileWriter(fileName,true);
+          myWriter.write(strToPrint+'\n');
           myWriter.close();
-          System.out.println("Enregistré ! \n");
+        }
+        catch (IOException e) {
+          System.out.println("Erreur.");
+          e.printStackTrace();
+        }
+}
+    public static void reWrite(String strToPrint, String fileName) {
+        try {
+          FileWriter myWriter = new FileWriter(fileName,true);
+          myWriter.write(strToPrint+'\n');
+          myWriter.close();
         }
         catch (IOException e) {
           System.out.println("Erreur.");
@@ -149,18 +159,4 @@ public class Utilitaires {
         }
 }
 
-    public static void read(File fileName) {
-        try {
-          Scanner sc = new Scanner(fileName);
-          while (sc.hasNextLine()) {
-          String data = sc.nextLine();
-          System.out.println(data);
-          }
-          sc.close();
-        } 
-         catch (FileNotFoundException e) {
-         System.out.println("Fichier non trouvé.");
-         e.printStackTrace();
-        }
-}
 }

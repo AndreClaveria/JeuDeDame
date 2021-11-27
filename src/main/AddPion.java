@@ -53,12 +53,12 @@ public class AddPion {
 	        
 	}
 	
-	public void printArrayListBlack(ArrayList<Pion> jeVeuxDormir) {
+	public void printArrayListBlack(ArrayList<Pion> deadPawnBlack) {
 		System.out.println("Dead Black Pawn : ");
-        for(int i = 0; i < jeVeuxDormir.size(); i++) {
+        for(int i = 0; i < deadPawnBlack.size(); i++) {
         	
-            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
-            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+            System.out.println((deadPawnBlack.get(i)).getNomPion() + "(" +
+            		(deadPawnBlack.get(i).getX()) + "," + (deadPawnBlack.get(i).getY())
             		+ ")");
             
         }
@@ -69,11 +69,11 @@ public class AddPion {
 	    System.out.println("-------------------------------------------------------");
 	}
 	
-	public void printArrayListWhite(ArrayList<Pion> jeVeuxDormir) {
+	public void printArrayListWhite(ArrayList<Pion> deadPawnWhite) {
 		System.out.println("Dead White Pawn : ");
-        for(int i = 0; i < jeVeuxDormir.size(); i++) {
-            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
-            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+        for(int i = 0; i < deadPawnWhite.size(); i++) {
+            System.out.println((deadPawnWhite.get(i)).getNomPion() + "(" +
+            		(deadPawnWhite.get(i).getX()) + "," + (deadPawnWhite.get(i).getY())
             		+ ")");    
         }
 	}
@@ -81,13 +81,12 @@ public class AddPion {
 	public void moveOfPawn(int oldX, int oldY, int newX, int newY ) {
 		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
 		Utilitaires.write(strToPrint, fileName);
-		Utilitaires.read(file);
-		System.out.println("-------------------------------------------------------");
+		System.out.println("-------------------------------------------------------"); 
 	    System.out.println(strToPrint);
 	    System.out.println("-------------------------------------------------------");
 	}
 	
-	public void writeInFile(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
+	public void eatAPawn(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
 		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
 		Utilitaires.write(strToPrint, fileName);
 		System.out.println("-------------------------------------------------------");
