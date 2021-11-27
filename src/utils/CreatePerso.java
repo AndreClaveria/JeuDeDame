@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.ArrayList;
-
 import model.Pion;
 
 public class CreatePerso {
@@ -27,7 +25,7 @@ public class CreatePerso {
 	public static Pion p18 = new Pion(2, 1, "p18","  n  ", false);
 	public static Pion p19 = new Pion(4, 1, "p19","  n  ", false);
 	public static Pion p20 = new Pion(6, 1, "p20","  n  ", false);
-	public static Pion p21 = new Pion(1, 4, "p21","  n  ", false); //1 0
+	public static Pion p21 = new Pion(1, 0, "p21","  n  ", false); //1 0
 	public static Pion p22 = new Pion(3, 0, "p22","  n  ", false);
 	public static Pion p23 = new Pion(5, 0, "p23","  n  ", false);
 	public static Pion p24 = new Pion(7, 0, "p24","  n  ", false);
