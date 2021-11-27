@@ -95,8 +95,9 @@ public class AddPion {
 	}
 	
 	public void pawnBecomeQueen(int newX, int newY ) {
+		String strToPrint ="(" + newX + "," + newY + ") est devenu une reine";
 		System.out.println("-------------------------------------------------------");
-	    System.out.println("(" + newX + "," + newY + ") est devenu une reine");
+	    Utilitaires.write(strToPrint, fileName);
 	    System.out.println("-------------------------------------------------------");
 	}
 
