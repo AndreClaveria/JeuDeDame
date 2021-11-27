@@ -1,5 +1,7 @@
 package main;
 
+import java.io.File;
+
 import model.Pion;
 
 import utils.Utilitaires;
@@ -15,6 +17,7 @@ public class JeuDeDame {
 	
 	
 	public void JeuDeGame() {
+		plus.file.delete();
 		Utilitaires.welcome();
 		plus.addPion();
 		do {

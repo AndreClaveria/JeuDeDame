@@ -147,16 +147,5 @@ public class Utilitaires {
           e.printStackTrace();
         }
 }
-    public static void reWrite(String strToPrint, String fileName) {
-        try {
-          FileWriter myWriter = new FileWriter(fileName,true);
-          myWriter.write(strToPrint+'\n');
-          myWriter.close();
-        }
-        catch (IOException e) {
-          System.out.println("Erreur.");
-          e.printStackTrace();
-        }
-}
 
 }
