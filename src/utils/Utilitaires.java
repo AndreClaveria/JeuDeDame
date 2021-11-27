@@ -1,13 +1,10 @@
 package utils;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import main.JeuDeDame;
 import main.Menu;
 
 
@@ -117,7 +114,7 @@ public class Utilitaires {
 			 System.out.println("Vous jouerez les blancs");
 			 System.out.print("White nickname : ");
 		        Blanc = m.AskBlanc(); 
-		        System.out.println("And your adversaire qui sont les Black!!");
+		        System.out.println("And your adversaire qui sont les Black!");
 		        Black = "Bot 01";
 		        System.out.println("Ce duel opposera alors " + Blanc + " against " + Black + "!");
 		        break;
@@ -125,7 +122,7 @@ public class Utilitaires {
 			 System.out.println("Vous avez choisi d'affronter un joueur");
 		        System.out.print("White nickname : ");
 		        Blanc = m.AskBlanc(); 
-		        System.out.println("And your adversaire qui sont les Black!!");
+		        System.out.println("And your adversaire qui sont les Black!");
 				System.out.print("Black nickname : ");
 				Black = m.AskBlack();
 				System.out.println("Ce duel opposera alors " + Blanc + " against " + Black + "!");
