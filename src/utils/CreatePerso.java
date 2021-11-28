@@ -17,8 +17,8 @@ public class CreatePerso {
 	public static Pion p10 = new Pion(2, 5, "p10","  w  ", false);
 	public static Pion p11 = new Pion(4, 5, "p11","  w  ", false);
 	public static Pion p12 = new Pion(6, 5, "p12","  w  ", false);
-	public static Pion p13 = new Pion(1, 2, "p13","  n  ", false);
-	public static Pion p14 = new Pion(3, 2, "p14","  n  ", false);
+	public static Pion p13 = new Pion(1, 4, "p13","  n  ", false);
+	public static Pion p14 = new Pion(3, 4, "p14","  n  ", false);
 	public static Pion p15 = new Pion(5, 2, "p15","  n  ", false);
 	public static Pion p16 = new Pion(7, 2, "p16","  n  ", false);
 	public static Pion p17 = new Pion(0, 1, "p17","  n  ", false); //0 1
