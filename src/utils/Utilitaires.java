@@ -12,6 +12,7 @@ public class Utilitaires {
 	
 	static Menu m = new Menu();
 	
+	File file = new File("data.txt");
 	static String Blanc = "";
 	static String Black = "";
 	public static void demandeLigne() {
@@ -106,22 +107,17 @@ public class Utilitaires {
 		
 	}
 	
-	public static void write(String strToPrint, String fileName) {	
-		BufferedWriter writer = null;
-		try {
-			File file = new File(fileName);
-			
-			if(!file.exists()) {
-				file.createNewFile();
-			}
-			writer = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
-			writer.write(strToPrint);
-			writer.close();
-		}
-		catch (IOException e) {
-				e.printStackTrace();
-		}
-	}
+	 public static void write(String strToPrint, String fileName) {
+	        try {
+	          FileWriter myWriter = new FileWriter(fileName,true);
+	          myWriter.write(strToPrint+'\n');
+	          myWriter.close();
+	        }
+	        catch (IOException e) {
+	          System.out.println("Erreur.");
+	          e.printStackTrace();
+	        }
+	 }
 	
 
 }

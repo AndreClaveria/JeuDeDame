@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -10,7 +11,8 @@ import utils.Utilitaires;
 
 public class AddPion {
 
-	public String fichier = "fichier.txt";
+	String fileName = new String("./data.txt");
+	File file = new File("data.txt");
 	
 	public ArrayList<Pion> allPion = new ArrayList<Pion>();
 	public ArrayList<Pion> deadPawnWhite = new ArrayList<Pion>();
@@ -76,25 +78,26 @@ public class AddPion {
         }
 	}
 	
-	public void MoveOfPawn(int oldX, int oldY, int newX, int newY ) {
+	public void moveOfPawn(int oldX, int oldY, int newX, int newY ) {
 		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
-		Utilitaires.write(strToPrint, fichier);
-		System.out.println("-------------------------------------------------------");
+		Utilitaires.write(strToPrint, fileName);
+		System.out.println("-------------------------------------------------------"); 
 	    System.out.println(strToPrint);
 	    System.out.println("-------------------------------------------------------");
 	}
 	
-	public void writeInFile(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
+	public void eatAPawn(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
 		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
-		Utilitaires.write(strToPrint, fichier);
+		Utilitaires.write(strToPrint, fileName);
 		System.out.println("-------------------------------------------------------");
 	    System.out.println(strToPrint);
 	    System.out.println("-------------------------------------------------------");
 	}
 	
-	public void PawnBecomeQueen(int newX, int newY ) {
+	public void pawnBecomeQueen(int newX, int newY ) {
+		String strToPrint ="(" + newX + "," + newY + ") est devenu une reine";
 		System.out.println("-------------------------------------------------------");
-	    System.out.println("(" + newX + "," + newY + ") est devenu une reine");
+	    Utilitaires.write(strToPrint, fileName);
 	    System.out.println("-------------------------------------------------------");
 	}
 }
