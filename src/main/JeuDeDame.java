@@ -68,28 +68,30 @@ public class JeuDeDame {
 			Utilitaires.demandeLigneMouv();
 			try {
 				v.directionColonne = v.mouv.nextInt();
-				System.out.println();
+				System.out.println("marche pas");
 				PNM = new int[] {v.directionLigne, v.directionColonne};
 				if(v.tour%2 == 0) {
-					
+					verifEatWite();
 					mouvDiagBlanc(p);
 					
 				} else {
-					
+					verifEatBack();
 					mouvDiagNoir(p);
 					
 				} 
 			} catch (Exception e) {
 				Utilitaires.BadInput();
 				v.mouv.next();
-				b.fillTab(b.tableauDeDame, plus.allPion);
 				direction();
+				b.fillTab(b.tableauDeDame, plus.allPion);
+				
 			}
 		} catch (Exception e) {
 			Utilitaires.BadInput();
 			v.mouv.next();
-			b.fillTab(b.tableauDeDame, plus.allPion);
 			direction();
+			b.fillTab(b.tableauDeDame, plus.allPion);
+			
 		}		
 	}
 	
@@ -136,9 +138,11 @@ public class JeuDeDame {
 	}
 	
 	public void mouvDiagBlanc(Pion p) {
-		verifEatWite();
+		
 		int verifEatInt = verifEatWhite(p);
+		
 		if (verifEatInt == 1){
+		
 			if((p.getX() + 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
 				&& (b.tableauDeDame[v.directionLigne][v.directionColonne] == "  -  ")
 				|| (p.getX() - 1) == v.directionLigne && (p.getY() - 1) == v.directionColonne
@@ -188,6 +192,7 @@ public class JeuDeDame {
 				} else {
 					Utilitaires.BadMove();
 					b.fillTab(b.tableauDeDame, plus.allPion);
+					direction();
 				}
 			}
 		}
@@ -213,7 +218,6 @@ public class JeuDeDame {
 	
 	public int verifEatWhite(Pion pion) {
 		int verifposs = 0;
-		
         for (int i  = 12; i < 24; i++) {
             if (Objects.isNull(eatMappingW[i][0])) {
                 verifposs++;
@@ -223,6 +227,7 @@ public class JeuDeDame {
         if (verifposs == 12) {
             return 1;
         }
+        
 		for (int i  = 12; i < 24; i++) {
 			if (Objects.nonNull(eatMappingW[i][0])) {
 				if(eatMappingW[i][0][0] == pion.getX() && eatMappingW[i][0][1] == pion.getY()) {
@@ -233,18 +238,15 @@ public class JeuDeDame {
 						}
 					}
 				}else {
-					System.out.println("Mouvement possible !");
 					for (int v = 0; v < 8; v++) {
 						if (Objects.nonNull(eatMappingW[i-12][v])) {
-							System.out.println("Tu peux manger avec le pion ("
-							+eatMappingW[i][0][0]+ "," + eatMappingW[i][0][1] + ") "
-							+ "en (" + eatMappingW[i-12][v][0] + "," 
-							+ eatMappingW[i-12][v][1] + ")");
+							System.out.println("Tu peux manger avec le pion ("+ eatMappingW[i][0][0] + "," + eatMappingW[i][0][1] + ") en (" + eatMappingW[i-12][v][0] + "," + eatMappingW[i-12][v][1] + ")");
 						}
 					}
 				}
 			}
 		}
+		
 		eatMappingW = new int[24][8][];
 		return 3;
 	}
@@ -285,14 +287,14 @@ public class JeuDeDame {
 	}
 
 	public boolean allBestEatingMoveWhiteDeepL(int posX, int posY){
-		if (posX <7 && posX+1 < 7 && posY-1 < 7 && posY <7 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX+1][posY-1] == "  -  ") {
+		if (posX <= 7 && posX+1 <= 7 && posY-1 <= 7 && posY <= 7 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX+1][posY-1] == "  -  ") {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean allBestEatingMoveWhiteDeepR(int posX, int posY){
-		if(posX > 0 && posX-1 > 0 && posY-1 > 0 && posY > 0 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX-1][posY-1] == "  -  ") {
+		if(posX >= 0 && posX-1 >= 0 && posY-1 >= 0 && posY >= 0 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX-1][posY-1] == "  -  ") {
 			return true;
 		}
 		return false;
@@ -328,7 +330,6 @@ public class JeuDeDame {
 	}
 	
 	public void mouvDiagNoir(Pion p) {
-		verifEatBack();
 		int verifEatInt = verifEatBlack(p);
 		if (verifEatInt == 1){
 			if((p.getX() + 1) == v.directionLigne && (p.getY() + 1) == v.directionColonne 
@@ -428,9 +429,10 @@ public class JeuDeDame {
 						}
 					}
 				}else {
+					
 					for (int v = 0; v < 8; v++) {
 						if (Objects.nonNull(eatMapping[i-12][v])) {
-							System.out.println("Tu peux manger avec le pion "+ eatMapping[i][0][0] + " " + eatMapping[i][0][1] + " en (" + eatMapping[i-12][v][0] + "," + eatMapping[i-12][v][1] + ")");
+							System.out.println("Tu peux manger avec le pion ("+ eatMapping[i][0][0] + "," + eatMapping[i][0][1] + ") en (" + eatMapping[i-12][v][0] + "," + eatMapping[i-12][v][1] + ")");
 						}
 					}
 				}
@@ -476,14 +478,14 @@ public class JeuDeDame {
 	}
 
 	public boolean allBestEatingMoveBlackDeepL(int posX, int posY){
-		if (posX <7 && posX+1 < 7 && posY+1 < 7 && posY <7 && b.tableauDeDame[posX][posY] == "  w  " && b.tableauDeDame[posX+1][posY+1] == "  -  ") {
+		if (posX <= 7 && posX+1 <= 7 && posY+1 <= 7 && posY <= 7 && b.tableauDeDame[posX][posY] == "  w  " && b.tableauDeDame[posX+1][posY+1] == "  -  ") {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean allBestEatingMoveBlackDeepR(int posX, int posY){
-		if(posX > 0 && posX-1 > 0 && posY+1 > 0 && posY > 0 && b.tableauDeDame[posX][posY] == "  w  " && b.tableauDeDame[posX-1][posY+1] == "  -  ") {
+		if(posX >= 0 && posX-1 >= 0 && posY+1 >= 0 && posY >= 0 && b.tableauDeDame[posX][posY] == "  w  " && b.tableauDeDame[posX-1][posY+1] == "  -  ") {
 			return true;
 		}
 		return false;
