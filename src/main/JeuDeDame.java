@@ -324,14 +324,14 @@ public class JeuDeDame {
 	}
 
 	public boolean allBestEatingMoveWhiteDeepL(int posX, int posY){
-		if (posX <= 7 && posX-1 <= 7 && posY-1 <= 7 && posY <= 7 && posX >= 0 && posX-1 >= 0 && posY-1 >= 0 && posY >= 0 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX+1][posY-1] == "  -  ") {
+		if (posX <= 7 && posX+1 <= 7 && posY-1 <= 7 && posY <= 7 && posX >= 0 && posX-1 >= 0 && posY-1 >= 0 && posY >= 0 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX+1][posY-1] == "  -  ") {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean allBestEatingMoveWhiteDeepR(int posX, int posY){
-		if(posX >= 0 && posX+1 >= 0 && posY-1 >= 0 && posY >= 0 && posX <= 7 && posX+1 <= 7 && posY-1 <= 7 && posY <= 7 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX-1][posY-1] == "  -  ") {
+		if(posX >= 0 && posX-1 >= 0 && posY-1 >= 0 && posY >= 0 && posX <= 7 && posX+1 <= 7 && posY-1 <= 7 && posY <= 7 && b.tableauDeDame[posX][posY] == "  n  " && b.tableauDeDame[posX-1][posY-1] == "  -  ") {
 			return true;
 		}
 		return false;
