@@ -38,7 +38,7 @@ With this project, we learn how to code a checkers with Java in a terminal
 
 ## Authors
 
-Code writted by **CLAVERIA AndrÃ©**, **MALLIPOUDY Vencat**, **MORACCHINI Florian**
+Code writted by **CLAVERIA Andre**, **MALLIPOUDY Vencat**, **MORACCHINI Florian**
 
 ------------------------
 
