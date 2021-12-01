@@ -18,13 +18,21 @@
 
 Our project is a Checkers in a terminal, where you can fight in a One on One with somebody else.
 
-You Enter the white *SurName*, The Black *SurName*, And let's the game begin !
-
 You play One by One, your goal is to Eat all the enemy pawns, or block them so that they can no longer play
 
-Be careful there are rules to respect you need to eat when you can eat, and if a pawn go to the other side of the board, he became a *KING/QUEEN*
+Be careful there are rules to respect you need to eat when you can eat, and you can eat more than one pawn
 
-You party is print in a txt, so you can see your move in the present time
+And if a pawn go to the other side of the board, he became a *KING/QUEEN*
+
+If you want to test configuration of board you can go in utils/CreatePerso.java and remove the comment of pawn
+
+/!\ Always take p1 to p24 and comment all the one you don't use. I suggest to test the Test 5 and 6 /!\
+
+You can enter the White *Nickname*, the Black *Nickname*. The winner of the game will have the honor to get his Nickname written in the *nicknameList.txt*
+
+And he'll see his number of win in *countNicknameVictory.txt*
+
+You game is print in a logs.txt, so you can see your move in the present time (but as soon that you restart a game the file is deleted)
 
 And their is also many text to help you during the game !
 
