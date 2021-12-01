@@ -29,12 +29,14 @@ public class JeuDeDame {
 	boolean whiteOrBlack = false;
 	
 	public void JeuDeGame() {
-		plus.file.delete();
+		
 		Utilitaires.welcome();
 		plus.addPion();	
 		cm.whoseTurn(v.tour);
 		b.fillTab(b.tableauDeDame, plus.allPion);
 		direction();
+		plus.winnerIs();
+		System.out.close();
 	}
 	
 	
@@ -65,11 +67,6 @@ public class JeuDeDame {
 				direction();
 			}
 		}
-		plus.winnerIs();
-		System.out.close();
-		
-		
-		
 	}
 	
 	public void mouvOneCase(Pion p) {
@@ -89,9 +86,13 @@ public class JeuDeDame {
 					mouvDiagNoir(p);
 				} 
 			} catch (Exception e) {
+				Utilitaires.badInput();
+				v.mouv.next();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 			}
 		} catch (Exception e) {
+			Utilitaires.badInput();
+			v.mouv.next();
 			b.fillTab(b.tableauDeDame, plus.allPion);
 		}		
 	}
@@ -182,8 +183,6 @@ public class JeuDeDame {
 					plus.deadPawnBlack.add(pion);
 					break;
 				}
-				
-				
 			}
 		}
 	}

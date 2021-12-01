@@ -154,7 +154,9 @@ public class Utilitaires {
 		 try {
 				List<String> allLines = Files.readAllLines(Paths.get(fileName));
 				for (String line : allLines) {
+					
 					if(line.equals(Utilitaires.Black)) {
+						
 						blackcount++;
 					}else if (line.equals(Utilitaires.Blanc)){
 						whitecount++;

@@ -47,6 +47,58 @@ public class AddPion {
 		allPion.add(CreatePerso.p22);
 		allPion.add(CreatePerso.p23);
 		allPion.add(CreatePerso.p24);
+		
+		//For testing Black Win condition
+//		deadPawnWhite.add(CreatePerso.p1);
+//		deadPawnWhite.add(CreatePerso.p2);
+//		deadPawnWhite.add(CreatePerso.p3);
+//		deadPawnWhite.add(CreatePerso.p4);
+//		deadPawnWhite.add(CreatePerso.p5);
+//		deadPawnWhite.add(CreatePerso.p6);
+//		deadPawnWhite.add(CreatePerso.p7);
+//		deadPawnWhite.add(CreatePerso.p8);
+//		deadPawnWhite.add(CreatePerso.p9);
+//		deadPawnWhite.add(CreatePerso.p10);
+//		deadPawnWhite.add(CreatePerso.p11);
+//		allPion.add(CreatePerso.p12);
+//		allPion.add(CreatePerso.p13);
+//		allPion.add(CreatePerso.p14);
+//		allPion.add(CreatePerso.p15);
+//		allPion.add(CreatePerso.p16);
+//		allPion.add(CreatePerso.p17);
+//		allPion.add(CreatePerso.p18);
+//		allPion.add(CreatePerso.p19);
+//		allPion.add(CreatePerso.p20);
+//		allPion.add(CreatePerso.p21);
+//		allPion.add(CreatePerso.p22);
+//		allPion.add(CreatePerso.p23);
+//		allPion.add(CreatePerso.p24);
+		
+		//For testing White Win condition
+//		allPion.add(CreatePerso.p1);
+//		allPion.add(CreatePerso.p2);
+//		allPion.add(CreatePerso.p3);
+//		allPion.add(CreatePerso.p4);
+//		allPion.add(CreatePerso.p5);
+//		allPion.add(CreatePerso.p6);
+//		allPion.add(CreatePerso.p7);
+//		allPion.add(CreatePerso.p8);
+//		allPion.add(CreatePerso.p9);
+//		allPion.add(CreatePerso.p10);
+//		allPion.add(CreatePerso.p11);
+//		allPion.add(CreatePerso.p12);
+//		allPion.add(CreatePerso.p13);
+//		deadPawnBlack.add(CreatePerso.p14);
+//		deadPawnBlack.add(CreatePerso.p15);
+//		deadPawnBlack.add(CreatePerso.p16);
+//		deadPawnBlack.add(CreatePerso.p17);
+//		deadPawnBlack.add(CreatePerso.p18);
+//		deadPawnBlack.add(CreatePerso.p19);
+//		deadPawnBlack.add(CreatePerso.p20);
+//		deadPawnBlack.add(CreatePerso.p21);
+//		deadPawnBlack.add(CreatePerso.p22);
+//		deadPawnBlack.add(CreatePerso.p23);
+//		deadPawnBlack.add(CreatePerso.p24);
 	}
 	
 	public void printBlackDeadArray(Pion p) {
@@ -136,7 +188,7 @@ public class AddPion {
 	}
 	
 	public boolean gameOver() {
-		if(deadPawnBlack.size() == 12 || deadPawnWhite.size() == 12) {
+		if(deadPawnBlack.size() == 12 || deadPawnWhite.size() == 2) {
 			return true;
 		}
 		return false;
@@ -151,7 +203,7 @@ public class AddPion {
 			Utilitaires.write(strToPrint, fileName1);
 			Utilitaires.write(str, fileName2);
 			System.out.println(Utilitaires.whiteWin());		
-		} else if(deadPawnWhite.size() == 12){
+		} else if(deadPawnWhite.size() == 2){
 			String strToPrint = Utilitaires.Black;
 			String str = "Pseudo: "+ Utilitaires.Black +" | "+ "Nb de victoire total : " + Utilitaires.blackcount + "\n ----- \n";
 			Utilitaires.write(strToPrint, fileName1);
