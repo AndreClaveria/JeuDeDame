@@ -40,16 +40,23 @@ public class JeuDeDame {
 	
 	public void direction() {
 		
-		Utilitaires.demandeColonne();
-		try {
-			v.directionLigne = v.mouv.nextInt();
-			Utilitaires.demandeLigne();
+		while(!plus.gameOver()) {
+			Utilitaires.demandeColonne();
 			try {
-				v.directionColonne = v.mouv.nextInt();
-				if(v.tour%2 == 0) {
-					mouvPionBlanc(v.directionLigne, v.directionColonne);
-				} else {
-					mouvPionNoir(v.directionLigne, v.directionColonne);
+				v.directionLigne = v.mouv.nextInt();
+				Utilitaires.demandeLigne();
+				try {
+					v.directionColonne = v.mouv.nextInt();
+					if(v.tour%2 == 0) {
+						mouvPionBlanc(v.directionLigne, v.directionColonne);
+					} else {
+						mouvPionNoir(v.directionLigne, v.directionColonne);
+					}
+				} catch(Exception e) {
+					Utilitaires.BadInput();
+					v.mouv.next();
+					b.fillTab(b.tableauDeDame, plus.allPion);
+					direction();
 				}
 			} catch(Exception e) {
 				Utilitaires.BadInput();
@@ -57,12 +64,11 @@ public class JeuDeDame {
 				b.fillTab(b.tableauDeDame, plus.allPion);
 				direction();
 			}
-		} catch(Exception e) {
-			Utilitaires.BadInput();
-			v.mouv.next();
-			b.fillTab(b.tableauDeDame, plus.allPion);
-			direction();
 		}
+		plus.winnerIs();
+		System.out.close();
+		
+		
 		
 	}
 	
@@ -165,14 +171,22 @@ public class JeuDeDame {
 	public void removePion(int i, int i2) {
 		for(Pion pion : plus.allPion) {
 			if (pion.getX() == i && pion.getY() == i2) {
-				System.out.println("Le pion en (" + i + "," + i2 + ") vient de disparaitre");
-				plus.allPion.remove(pion);
-				break;
+				if(pion.getPion() == "  w  ") {
+					System.out.println("Le pion blanc en (" + i + "," + i2 + ") vient de disparaitre");
+					plus.allPion.remove(pion);
+					plus.deadPawnWhite.add(pion);
+					break;
+				} else {
+					System.out.println("Le pion noir en (" + i + "," + i2 + ") vient de disparaitre");
+					plus.allPion.remove(pion);
+					plus.deadPawnBlack.add(pion);
+					break;
+				}
+				
 				
 			}
 		}
 	}
-
 	
 	
 	public void  verifWhichDepthToTake(boolean whiteOrBlack) {

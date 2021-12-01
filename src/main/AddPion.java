@@ -20,6 +20,7 @@ public class AddPion {
 	
 	
 	public void addPion() {
+		
 		allPion.add(CreatePerso.p1);
 		allPion.add(CreatePerso.p2);
 		allPion.add(CreatePerso.p3);
@@ -130,5 +131,21 @@ public class AddPion {
 		    System.out.println("-------------------------------------------------------");
 		}
 		
+	}
+	
+	public boolean gameOver() {
+		if(deadPawnBlack.size() == 12 || deadPawnWhite.size() == 12) {
+			return true;
+		}
+		return false;
+		
+	}
+		    
+	public void winnerIs() { 
+		if (deadPawnBlack.size() == 12) {
+			System.out.println(Utilitaires.WhiteWin());		
+		} else if(deadPawnWhite.size() == 12){
+			 System.out.println(Utilitaires.BlackWin());
+		}
 	}
 }

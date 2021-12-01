@@ -54,22 +54,20 @@ public class Utilitaires {
 	    System.out.println("#######################################################");
 	        
 	}
-	public static void BlackWin() {
-        System.out.println("#######################################################");
-        System.out.println("UWU !!! BLACK'S HAS WON !!! GG à "  + Black.toUpperCase());
-        System.out.println("#######################################################");
-
+	public static String BlackWin() {
+		return
+		"#######################################################\n	  !!! BLACK HAS WON !!! GG à " + Black.toUpperCase() + "\n#######################################################";
+     
     }
-    public static void WhiteWin() {
-        System.out.println("#######################################################");
-        System.out.println("UWU !!! WHITE'S HAS WON !!! GG à " + Blanc.toUpperCase());
-        System.out.println("#######################################################");
+    public static String WhiteWin() {
+    	return 
+        "#######################################################\n 	  !!! WHITE HAS WON !!! GG à " + Blanc.toUpperCase() + "\n#######################################################";
 
     }
 	public static void Welcome() {
 	    System.out.println("#######################################################");
 	    System.out.println("Bienvenue, in our Game fait par : ");
-	        System.out.println("Us Hehe(André, Vencatveer, Florian) !");
+	        System.out.println("Us Hehe(Andre, Vencatveer, Florian) !");
 	        System.out.println("----------------------------------------------------------");
 	        System.out.println("Soyez sure de ne pas write other thing that you don't need");
 	        System.out.println("Have Fun!!");
@@ -119,5 +117,4 @@ public class Utilitaires {
 	        }
 	 }
 	
-
 }
