@@ -4,9 +4,11 @@
 
 ## How to start the game and Things used
 
-* Depend on what you are but in *Eclipse* is with the green Arrow, or the Run
+* In *Eclipse* File -> Import -> Git -> Projects from Git (with smart import) -> Clone URL -> put the URL and authentification -> Next
 
-* For this Project we used, github for the git, Eclipse for the text editor, And Discord for the communication between the members
+* For start the Checkers right click on the new file *JeuDeDame* created in the Package Explorer and click on *Run As*
+
+* For this Project we used, Github for the git, Eclipse as IDE, And Discord for the communication between the members
 
 * /!\ Warning, If you need to double *Enter* after an Input it's because of Eclipse bug /!\ 
 
@@ -45,6 +47,10 @@ Code writted by **CLAVERIA Andre**, **MALLIPOUDY Vencat**, **MORACCHINI Florian*
 ## Work of the members and Methodology
 
 We decide to work together in our free time, with *DISCORD*, we make a big part of the project together, except for exemple the textual, the TXT, the README...
+
+* All the projet was on Github, we worked on different branch for not making merging problem. 
+
+![picture](images/branchGit.png)
 
 * Firstly, we decided witch project we would done, we choosed Checkers because for us it was the one who could learn us the most things, and because we found this project more attractive than the other
 
