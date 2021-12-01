@@ -11,8 +11,10 @@ import utils.Utilitaires;
 
 public class AddPion {
 
-	String fileName = new String("./data.txt");
-	File file = new File("data.txt");
+	String fileName = new String("./logs.txt");
+	String fileName1 = new String("./nicknameList.txt");
+	String fileName2 = new String("./countNicknameVictory.txt");
+	File file = new File("logs.txt");
 	
 	public ArrayList<Pion> allPion = new ArrayList<Pion>();
 	public ArrayList<Pion> deadPawnWhite = new ArrayList<Pion>();
@@ -47,34 +49,34 @@ public class AddPion {
 		allPion.add(CreatePerso.p24);
 	}
 	
-	public void PrintBlackDeadArray(Pion p) {
+	public void printBlackDeadArray(Pion p) {
 	    System.out.println("-------------------------------------------------------");
-	    PrintArrayListBlack(deadPawnBlack);
+	    printArrayListBlack(deadPawnBlack);
 	    System.out.println("-------------------------------------------------------");
 	        
 	}
 	
-	public void PrintArrayListBlack(ArrayList<Pion> jeVeuxDormir) {
+	public void printArrayListBlack(ArrayList<Pion> deadPawnBlack) {
 		System.out.println("Dead Black Pawn : ");
-        for(int i = 0; i < jeVeuxDormir.size(); i++) {
+        for(int i = 0; i < deadPawnBlack.size(); i++) {
         	
-            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
-            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+            System.out.println((deadPawnBlack.get(i)).getNomPion() + "(" +
+            		(deadPawnBlack.get(i).getX()) + "," + (deadPawnBlack.get(i).getY())
             		+ ")");
             
         }
 	}
-	public void PrintWhiteDeadArray(Pion p) {
+	public void printWhiteDeadArray(Pion p) {
 	    System.out.println("-------------------------------------------------------");
-	    PrintArrayListWhite(deadPawnWhite);
+	    printArrayListWhite(deadPawnWhite);
 	    System.out.println("-------------------------------------------------------");
 	}
 	
-	public void PrintArrayListWhite(ArrayList<Pion> jeVeuxDormir) {
+	public void printArrayListWhite(ArrayList<Pion> deadPawnWhite) {
 		System.out.println("Dead White Pawn : ");
-        for(int i = 0; i < jeVeuxDormir.size(); i++) {
-            System.out.println((jeVeuxDormir.get(i)).getNomPion() + "(" +
-            		(jeVeuxDormir.get(i).getX()) + "," + (jeVeuxDormir.get(i).getY())
+        for(int i = 0; i < deadPawnWhite.size(); i++) {
+            System.out.println((deadPawnWhite.get(i)).getNomPion() + "(" +
+            		(deadPawnWhite.get(i).getX()) + "," + (deadPawnWhite.get(i).getY())
             		+ ")");    
         }
 	}
@@ -142,10 +144,19 @@ public class AddPion {
 	}
 		    
 	public void winnerIs() { 
+		Utilitaires.read(fileName1);
 		if (deadPawnBlack.size() == 12) {
-			System.out.println(Utilitaires.WhiteWin());		
+			String strToPrint = Utilitaires.Blanc;
+			String str = "Pseudo: "+ Utilitaires.Blanc +" | "+ "Nb de victoire total : " + Utilitaires.whitecount + "\n ----- \n";
+			Utilitaires.write(strToPrint, fileName1);
+			Utilitaires.write(str, fileName2);
+			System.out.println(Utilitaires.whiteWin());		
 		} else if(deadPawnWhite.size() == 12){
-			 System.out.println(Utilitaires.BlackWin());
+			String strToPrint = Utilitaires.Black;
+			String str = "Pseudo: "+ Utilitaires.Black +" | "+ "Nb de victoire total : " + Utilitaires.blackcount + "\n ----- \n";
+			Utilitaires.write(strToPrint, fileName1);
+			Utilitaires.write(str, fileName2);
+			 System.out.println(Utilitaires.blackWin());
 		}
 	}
 }

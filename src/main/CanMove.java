@@ -8,9 +8,9 @@ public class CanMove {
 	
 	public void whoseTurn(int tour) {
 		if(tour%2 == 0) {
-			Utilitaires.Whiteturn();
+			Utilitaires.whiteTurn();
 		} else {
-			Utilitaires.BlackTurn();
+			Utilitaires.blackTurn();
 		}
 	}
 	

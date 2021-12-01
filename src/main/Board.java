@@ -13,23 +13,23 @@ public class Board {
 	public String[][] tableauDeDame = new String[ligne][colonne];
 	
 	public void printTab(String[][] tableauDeDame) {
-		DisplayRowIndex();
+		displayRowIndex();
 		for(int i = 0; i < tableauDeDame.length; i++) {
-			DrawHorizontalLine();
+			drawHorizontalLine();
 			
 			for(int j = 0; j < tableauDeDame[i].length; j++) {
 				if(j == 0) {
-					LeftDisplayColIndex(i);
+					leftDisplayColIndex(i);
 				} else {
-					DrawVerticalLine();
+					drawVerticalLine();
 				}
 				System.out.print(tableauDeDame[j][i]);				
 			}
-			RightDisplayColIndex(i);
+			rightDisplayColIndex(i);
 			System.out.println();
 		}
-		DrawHorizontalLine();
-		DisplayRowIndex();
+		drawHorizontalLine();
+		displayRowIndex();
 	}
 	
 	
@@ -64,24 +64,24 @@ public class Board {
 		printTab(tableauDeDame);
 	}
 			
-	public void DrawHorizontalLine() {        
+	public void drawHorizontalLine() {        
 		System.out.println("   _______________________________________________");   
 	}
 
-	public void DrawVerticalLine() {
+	public void drawVerticalLine() {
 		System.out.print("|");
 	}
 
-	public void LeftDisplayColIndex(int i) {
+	public void leftDisplayColIndex(int i) {
 		
 		System.out.print(i + " |");
 	}
-	public void RightDisplayColIndex(int i) {
+	public void rightDisplayColIndex(int i) {
 		
 		System.out.print("| " + i);
 	}
 	
-	public void DisplayRowIndex() {
+	public void displayRowIndex() {
 	    for(int index = 0; index < 8; index++) {
 	    	System.out.print("     " + index);
 	    }

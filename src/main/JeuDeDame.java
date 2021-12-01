@@ -30,7 +30,7 @@ public class JeuDeDame {
 	
 	public void JeuDeGame() {
 		plus.file.delete();
-		Utilitaires.Welcome();
+		Utilitaires.welcome();
 		plus.addPion();	
 		cm.whoseTurn(v.tour);
 		b.fillTab(b.tableauDeDame, plus.allPion);
@@ -53,13 +53,13 @@ public class JeuDeDame {
 						mouvPionNoir(v.directionLigne, v.directionColonne);
 					}
 				} catch(Exception e) {
-					Utilitaires.BadInput();
+					Utilitaires.badInput();
 					v.mouv.next();
 					b.fillTab(b.tableauDeDame, plus.allPion);
 					direction();
 				}
 			} catch(Exception e) {
-				Utilitaires.BadInput();
+				Utilitaires.badInput();
 				v.mouv.next();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 				direction();
@@ -122,7 +122,7 @@ public class JeuDeDame {
 					mouvOneCase(p);
 					break;
 				} else {
-					Utilitaires.BadPionBlanc();
+					Utilitaires.badPionBlanc();
 					b.fillTab(b.tableauDeDame, plus.allPion);
 					direction();
 				} 
@@ -150,7 +150,7 @@ public class JeuDeDame {
 					pawnBecomeBeg();
 					b.fillTab(b.tableauDeDame, plus.allPion);	
 			} else {
-				Utilitaires.BadMove();
+				Utilitaires.badMove();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 				direction();
 			} 
@@ -332,7 +332,7 @@ public class JeuDeDame {
 						mouvOneCase(p);
 						break;
 					} else {
-						Utilitaires.BadPionBlack();
+						Utilitaires.badPionBlack();
 						b.fillTab(b.tableauDeDame, plus.allPion);
 						direction();
 					} 
@@ -360,7 +360,7 @@ public class JeuDeDame {
 					pawnBecomeBeg();
 					b.fillTab(b.tableauDeDame, plus.allPion);
 			} else {
-				Utilitaires.BadMove();
+				Utilitaires.badMove();
 				b.fillTab(b.tableauDeDame, plus.allPion);
 				direction();
 			}

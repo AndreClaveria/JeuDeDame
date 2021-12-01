@@ -1,0 +1,15 @@
+Pseudo: a | Nb de victoire total : 1
+ ----- 
+
+Pseudo: a | Nb de victoire total : 2
+ ----- 
+
+Pseudo: a | Nb de victoire total : 1
+ ----- 
+
+Pseudo: t | Nb de victoire total : 1
+ ----- 
+
+Pseudo:  | Nb de victoire total : 1
+ ----- 
+
