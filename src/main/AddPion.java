@@ -78,26 +78,57 @@ public class AddPion {
         }
 	}
 	
-	public void moveOfPawn(int oldX, int oldY, int newX, int newY ) {
-		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
-		Utilitaires.write(strToPrint, fileName);
-		System.out.println("-------------------------------------------------------"); 
-	    System.out.println(strToPrint);
-	    System.out.println("-------------------------------------------------------");
+	public void moveOfPawn(int tour, int oldX, int oldY, int newX, int newY ) {
+		if(tour%2 == 0) {
+			String strToPrint = "Blanc : (" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		} else {
+			String strToPrint = "Blanc : (" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		}
+		
 	}
 	
-	public void eatAPawn(int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
-		String strToPrint = "(" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
-		Utilitaires.write(strToPrint, fileName);
-		System.out.println("-------------------------------------------------------");
-	    System.out.println(strToPrint);
-	    System.out.println("-------------------------------------------------------");
+	
+	public void eatAPawn(int tour, int oldX, int oldY, int newX, int newY, int eatPawnX, int eatPawnY) {
+		if(tour%2 == 0) {
+			String strToPrint = "Blanc : (" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		} else {
+			String strToPrint = "Noir : (" + oldX + "," + oldY + ") -> (" + newX + "," + newY + ")" + " a mangé le pion en (" + eatPawnX + "," + eatPawnY + ")";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		}
+		
+		
 	}
 	
-	public void pawnBecomeQueen(int newX, int newY ) {
-		String strToPrint ="(" + newX + "," + newY + ") est devenu une reine";
-		System.out.println("-------------------------------------------------------");
-	    Utilitaires.write(strToPrint, fileName);
-	    System.out.println("-------------------------------------------------------");
+	public void pawnBecomeQueen(int tour, int newX, int newY ) {
+		
+		if(tour%2 == 0) {
+			String strToPrint ="Blanc : (" + newX + "," + newY + ") est devenu une reine";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		} else {
+			String strToPrint ="Noir : (" + newX + "," + newY + ") est devenu une reine";
+			Utilitaires.write(strToPrint, fileName);
+			System.out.println("-------------------------------------------------------");
+		    System.out.println(strToPrint);
+		    System.out.println("-------------------------------------------------------");
+		}
+		
 	}
 }
