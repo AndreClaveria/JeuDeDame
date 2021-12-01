@@ -188,7 +188,7 @@ public class AddPion {
 	}
 	
 	public boolean gameOver() {
-		if(deadPawnBlack.size() == 12 || deadPawnWhite.size() == 2) {
+		if(deadPawnBlack.size() == 12 || deadPawnWhite.size() == 12) {
 			return true;
 		}
 		return false;
@@ -203,7 +203,7 @@ public class AddPion {
 			Utilitaires.write(strToPrint, fileName1);
 			Utilitaires.write(str, fileName2);
 			System.out.println(Utilitaires.whiteWin());		
-		} else if(deadPawnWhite.size() == 2){
+		} else if(deadPawnWhite.size() == 12){
 			String strToPrint = Utilitaires.Black;
 			String str = "Pseudo: "+ Utilitaires.Black +" | "+ "Nb de victoire total : " + Utilitaires.blackcount + "\n ----- \n";
 			Utilitaires.write(strToPrint, fileName1);
